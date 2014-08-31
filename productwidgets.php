@@ -8,7 +8,7 @@
  *
  * @wordpress-plugin
  * Plugin Name: ProductWidgets
- * Plugin URI:  http://www.productwidgets.com/
+ * Plugin URI:  http://www.productwidgets.com/publishers/wordpress/
  * Description: Monetize your website with intelligent affiliate widgets displaying products that perfectly fit your unique content.
  * Text Domain: productwidgets
  * Version:     1.0.1
