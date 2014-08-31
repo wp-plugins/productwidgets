@@ -1,0 +1,56 @@
+/* line 3, ../../sass/pages/_settings.scss */
+body.productwidgets_page_productwidgets-settings #existing-api-key-form {
+  display: none;
+}
+/* line 10, ../../sass/pages/_settings.scss */
+body.productwidgets_page_productwidgets-settings form#tracking-ids table,
+body.productwidgets_page_productwidgets-settings form#default-locale table {
+  display: none;
+}
+
+/* line 9, ../../sass/pages/_widget-layouts.scss */
+body.toplevel_page_productwidgets-widget-layouts table.widgets tr th#layout {
+  width: 340px;
+}
+/* line 13, ../../sass/pages/_widget-layouts.scss */
+body.toplevel_page_productwidgets-widget-layouts table.widgets tr th#implemented {
+  width: 200px;
+}
+/* line 17, ../../sass/pages/_widget-layouts.scss */
+body.toplevel_page_productwidgets-widget-layouts table.widgets tr th#shortcode {
+  width: 280px;
+}
+/* line 26, ../../sass/pages/_widget-layouts.scss */
+body.toplevel_page_productwidgets-widget-layouts table.widgets tr td.actions .widget-preview-container {
+  display: none;
+}
+/* line 36, ../../sass/pages/_widget-layouts.scss */
+body.toplevel_page_productwidgets-widget-layouts .widget-preview-wrapper {
+  text-align: center;
+}
+/* line 39, ../../sass/pages/_widget-layouts.scss */
+body.toplevel_page_productwidgets-widget-layouts .widget-preview-wrapper .pw-widget {
+  margin: 0 auto;
+}
+
+/* line 6, ../../sass/admin.scss */
+.lazy,
+.thickbox-content {
+  display: none;
+}
+
+/* line 13, ../../sass/admin.scss */
+.ajax-loader img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* line 19, ../../sass/admin.scss */
+.error {
+  color: #f00;
+}
+
+/* line 23, ../../sass/admin.scss */
+textarea.shortcode {
+  width: 240px;
+}
