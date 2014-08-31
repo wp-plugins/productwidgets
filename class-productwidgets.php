@@ -54,13 +54,22 @@ class Product_Widgets {
   protected static $instance = null;
 
   /**
-   * Base URL for loading widgets.
+   * URL for displaying widgets.
    *
    * @since    1.0.0
    *
    * @var      string
    */
-  protected $base_url = null;
+  protected $display_url = null;
+
+  /**
+   * URL to the plugin folder
+   *
+   * @since    1.0.1
+   *
+   * @var      string
+   */
+  protected $plugin_url = null;
 
   /**
    * API
@@ -77,7 +86,8 @@ class Product_Widgets {
    * @since     1.0.0
    */
   private function __construct() {
-    $this->base_url = 'http://display.productwidgets'.(PW_DEV ? '.dev' : '.com');
+    $this->display_url = 'http://display.productwidgets'.(PW_DEV ? '.dev' : '.com');
+    $this->plugin_url = trailingslashit(trailingslashit(plugins_url()).$this->plugin_slug);
 
     // Register admin settings
     add_action('admin_init', array($this, 'register_admin_settings'));
@@ -129,10 +139,10 @@ class Product_Widgets {
    */
   public function enqueue_admin_styles_and_scripts() {
     $screen = get_current_screen();
-    if (preg_match("/".$this->plugin_slug."/i", $screen->id)) {
-      wp_enqueue_style($this->plugin_slug."-admin-styles", plugins_url("css/admin.css", __FILE__), array(), self::VERSION);
-      wp_enqueue_script($this->plugin_slug."-jquery-lazyload-script", plugins_url("js/jquery.lazyload.js", __FILE__), array("jquery"), self::VERSION, true);
-      wp_enqueue_script($this->plugin_slug."-admin-script", plugins_url("js/admin.js", __FILE__), array("jquery"), self::VERSION, true);
+    if (preg_match("/".$this->plugin_slug.'/i', $screen->id)) {
+      wp_enqueue_style($this->plugin_slug.'-admin-styles', $this->plugin_url.'css/admin.css', array(), self::VERSION);
+      wp_enqueue_script($this->plugin_slug.'-jquery-lazyload-script', $this->plugin_url.'js/jquery.lazyload.js', array('jquery'), self::VERSION, true);
+      wp_enqueue_script($this->plugin_slug.'-admin-script', $this->plugin_url.'js/admin.js', array('jquery'), self::VERSION, true);
     }
   }
 
@@ -290,7 +300,7 @@ class Product_Widgets {
   public function generate_javascript_tag($layout) {
     $api_key = get_option('api_key');
     if (empty($api_key)) return 'ProductWidgets: API Key not set.';
-    return '<script src="'.$this->base_url.'/'.$api_key.'/'.$layout.'/widget.js" type="text/javascript"></script>'."\n";
+    return '<script src="'.$this->display_url.'/'.$api_key.'/'.$layout.'/widget.js" type="text/javascript"></script>'."\n";
   }
 
   public function locale_to_country($locale) {

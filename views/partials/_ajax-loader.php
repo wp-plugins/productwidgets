@@ -1,4 +1,4 @@
 <div class='ajax-loader'>
-  <img src='<?php echo trailingslashit(trailingslashit(plugins_url()).$this->plugin_slug)."images/ajax-loader.gif" ?>'>
+  <img src='<?php echo $this->plugin_url."images/ajax-loader.gif" ?>'>
   Loading, please wait...
 </div>

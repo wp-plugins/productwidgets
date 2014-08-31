@@ -47,6 +47,10 @@ Yes! The widgets are cached on a global content delivery network (CDN), which ma
 
 == Changelog ==
 
+= 1.0.1 =
+
+* Fix asset URLs
+
 = 1.0.0 =
 
 * Initial release
