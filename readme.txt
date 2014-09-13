@@ -25,7 +25,7 @@ Getting started is simple: install the plugin, place a widget shortcode in a pos
 
 * **Geo-targeted** - Your visitors come from all over the world, and showing products from the US to a visitor from Italy would not be very smart. Amazon is available in many different countries, and ProductsWidgets makes sure that your visitors always see products from their local Amazon store.
 
-* **Simple Integration** - Adding a widget to your site couldn't be easier: just install the plugin, pick from a standard widget layout (Leaderboard, Skyscraper etc.) and copy the shortcode to a post of the layout of your blog. Your widget will appear immediately and be optimized during the next few hours.
+* **Simple integration** - Adding a widget to your site couldn't be easier: just install the plugin, pick from a standard widget layout (Leaderboard, Skyscraper etc.) and copy the shortcode to a post of the layout of your blog. Your widget will appear immediately and be optimized during the next few hours.
 
 * **Unobtrusive** - We understand you don't want ugly Flash widgets on your blog that are heavily branded and destroy your site layout! Our widgets are plain and simple and blend in to your site layout easily. We put the product images front and center since they receive the most clicks.
 
@@ -35,17 +35,19 @@ Getting started is simple: install the plugin, place a widget shortcode in a pos
 
 = Install the plugin directly from Wordpress or manually =
 
+**Installation from Wordpress:** Search for `ProductWidgets` on the plugins page of your Wordpress admin.
+
 **Manual installation:** Extract the zip file and copy the extracted folder into the `wp-content/plugins/` directory of your WordPress installation.
 
 = Activate plugin =
 
-Activate the plugin from the plugins page.
+Activate the plugin from the plugins page of your Wordpress admin.
 
 = Create your free ProductWidgets account =
 
 To be able to use the service, you need to create a free ProductWidgets account. You will receive an API key that is used by the plugin to talk to the ProductWidgets API and manage your widgets.
 
-**Don't worry! No personal data will be submitted! Creating an account is completely free and does not create any further obligations for you!**
+*Don't worry! No personal data will be submitted! Creating an account is completely free and does not create any further obligations for you!*
 
 Open the ProductWidgets settings page (ProductWidgets > Settings) to create your free account.
 
@@ -53,7 +55,7 @@ Open the ProductWidgets settings page (ProductWidgets > Settings) to create your
 
 To make sure that you receive the commissions for the products you promote, you need to enter your affiliate data in the plugin settings.
 
-**Right now only Amazon is supported as a affiliate platform, so you need to enter your Amazon affiliate tracking IDs. More affiliate platforms will be available soon.**
+*Right now only Amazon is supported as a affiliate platform, so you need to enter your Amazon affiliate tracking IDs. More affiliate platforms will be available soon.*
 
 Open the ProductWidgets settings page (ProductWidgets > Settings) and enter your Amazon affiliate tracking IDs. The Amazon stores in each of the supported countries (UK, US, Canada, Germany, Spain, France, and Italy) each have a separate affiliate program, so you need to sign up to each program individually. The links to the programs are included on the settings page and signing up normally takes only a few minutes.
 
@@ -65,15 +67,17 @@ Go to the list of widget layouts (ProductWidgets > Widget Layouts) and pick the 
 
 Note that you can add the shortcode to a blog post, a page, the layout or even a sidebar widget (for the latter, add a Wordpress "text" widget to the sidebar and enter the shortcode there).
 
+**If you have any more questions or something doesn't work as expected, don't hesitate to [get in touch via email](mailto:hello@productwidgets.com) and we will help you out!**
+
 == Frequently Asked Questions ==
-
-= I have more questions! =
-
-Check out the [Wordpress section on the ProductWidgets website](http://www.productwidgets.com/publishers/wordpress/) for more information about this plugin or get in touch with us [via email](mailto:hello@productwidgets.com).
 
 = What happens when the ProductWidgets website/service is down? Will my widgets still appear? =
 
 Yes! The widgets are cached on a global content delivery network (CDN), which makes then appear very fast around the world, even if the ProductWidgets service is temporarily not available.
+
+= I have more questions! =
+
+Check out the [Wordpress section on the ProductWidgets website](http://www.productwidgets.com/publishers/wordpress/) for more information about this plugin or get in touch with us [via email](mailto:hello@productwidgets.com).
 
 == Changelog ==
 
