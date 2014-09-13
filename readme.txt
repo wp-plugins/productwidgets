@@ -11,7 +11,7 @@ Monetize your website with intelligent affiliate widgets displaying products tha
 
 == Description ==
 
-The ProductWidgets plugin automates your affiliate marketing process by analyzing your content and displaying matching affiliate products to your visitors. The whole process is fully automated and happens behind the scenes, so you can focus on creating great content and let ProductWidgets take care of the monetization for you!
+**The ProductWidgets plugin automates your affiliate marketing process by analyzing your content and displaying matching affiliate products to your visitors. The whole process is fully automated and happens behind the scenes, so you can focus on creating great content and let ProductWidgets take care of the monetization for you!**
 
 Getting started is simple: install the plugin, place a widget shortcode in a posts or the sidebar, and products will be displayed immediately. Please note that it might take up to a three hours until the products are optimized for your content.
 
@@ -29,7 +29,7 @@ Getting started is simple: install the plugin, place a widget shortcode in a pos
 
 * **Unobtrusive** - We understand you don't want ugly Flash widgets on your blog that are heavily branded and destroy your site layout! Our widgets are plain and simple and blend in to your site layout easily. We put the product images front and center since they receive the most clicks.
 
-* **Fast** - Our widgets are fast! On average, They load in less than 100 milliseconds and use asynchronous loading techniques to not slow down your site.
+* **Fast** - Our widgets are fast! On average, they load in less than 100 milliseconds and use asynchronous loading techniques to not slow down your site.
 
 == Installation ==
 
