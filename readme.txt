@@ -17,19 +17,33 @@ Getting started is simple: install the plugin, place a widget shortcode in a pos
 
 *Currently only the Amazon affiliate network (with its many millions products in seven countries) is supported, but we are working on implementing more advertisers and affiliate networks! [Email us](mailto:hello@productwidgets.com) to let us know which ones you would like to use!*
 
-* **Fully automated** - ProductWidgets is a "set and forget" solution and doesn't require any ongoing work after the initial setup. The magic happens behind the scenes where our algorithms are hard at work to make sure the widgets are always up to date and show the best products for your content.
+#### Fully automated
 
-* **Self-optimizing** - Each widget selects its products automatically based on the content of the page it is implemented on. It then monitors the products it shows to make sure that the those that perform best are shown more often and those that don't receive a lot of clicks are sorted out quickly. This makes attractive products "bubble up" naturally and maximizes your commissions.
+ProductWidgets is a "set and forget" solution and doesn't require any ongoing work after the initial setup. The magic happens behind the scenes where our algorithms are hard at work to make sure the widgets are always up to date and show the best products for your content.
 
-* **Always up-to-date** - New products are added to Amazon every day and old products are removed or go out of stock. ProductWidgets constantly checks whether all products are still available and automatically adds new ones to your widgets to see if they perform well.
+#### Self-optimizing
 
-* **Geo-targeted** - Your visitors come from all over the world, and showing products from the US to a visitor from Italy would not be very smart. Amazon is available in many different countries, and ProductsWidgets makes sure that your visitors always see products from their local Amazon store.
+Each widget selects its products automatically based on the content of the page it is implemented on. It then monitors the products it shows to make sure that the those that perform best are shown more often and those that don't receive a lot of clicks are sorted out quickly. This makes attractive products "bubble up" naturally and maximizes your commissions.
 
-* **Simple integration** - Adding a widget to your site couldn't be easier: just install the plugin, pick from a standard widget layout (Leaderboard, Skyscraper etc.) and copy the shortcode to a post of the layout of your blog. Your widget will appear immediately and be optimized during the next few hours.
+#### Always up-to-date
 
-* **Unobtrusive** - We understand you don't want ugly Flash widgets on your blog that are heavily branded and destroy your site layout! Our widgets are plain and simple and blend in to your site layout easily. We put the product images front and center since they receive the most clicks.
+New products are added to Amazon every day and old products are removed or go out of stock. ProductWidgets constantly checks whether all products are still available and automatically adds new ones to your widgets to see if they perform well.
 
-* **Fast** - Our widgets are fast! On average, they load in less than 100 milliseconds and use asynchronous loading techniques to not slow down your site.
+#### Geo-targeted
+
+Your visitors come from all over the world, and showing products from the US to a visitor from Italy would not be very smart. Amazon is available in many different countries, and ProductsWidgets makes sure that your visitors always see products from their local Amazon store.
+
+#### Simple integration
+
+Adding a widget to your site couldn't be easier: just install the plugin, pick from a standard widget layout (Leaderboard, Skyscraper etc.) and copy the shortcode to a post of the layout of your blog. Your widget will appear immediately and be optimized during the next few hours.
+
+#### Unobtrusive
+
+We understand you don't want ugly Flash widgets on your blog that are heavily branded and destroy your site layout! Our widgets are plain and simple and blend in to your site layout easily. We put the product images front and center since they receive the most clicks.
+
+#### Fast
+
+Our widgets are fast! On average, they load in less than 100 milliseconds and use asynchronous loading techniques to not slow down your site.
 
 == Installation ==
 
