@@ -11,9 +11,25 @@ Monetize your website with intelligent affiliate widgets displaying products tha
 
 == Description ==
 
-ProductWidgets - Fully automated ecommerce marketing.
+The ProductWidgets plugin automates your affiliate marketing process by analyzing your content and displaying matching affiliate products to your visitors. The whole process is fully automated and happens behind the scenes, so you can focus on creating great content and let ProductWidgets take care of the monetization for you!
 
-Monetize your website with intelligent affiliate widgets displaying products that perfectly fit your unique content.
+Getting started is simple: install the plugin, place a widget shortcode in a posts or the sidebar, and products will be displayed immediately. Please note that it might take up to a three hours until the products are optimized for your content.
+
+*Currently only the Amazon affiliate network (with its many millions products in seven countries) is supported, but we are working on implementing more advertisers and affiliate networks! [Email us](mailto:hello@productwidgets.com) to let us know which ones you would like to use!*
+
+* **Fully automated** - ProductWidgets is a "set and forget" solution and doesn't require any ongoing work after the initial setup. The magic happens behind the scenes where our algorithms are hard at work to make sure the widgets are always up to date and show the best products for your content.
+
+* **Self-optimizing** - Each widget selects its products automatically based on the content of the page it is implemented on. It then monitors the products it shows to make sure that the those that perform best are shown more often and those that don't receive a lot of clicks are sorted out quickly. This makes attractive products "bubble up" naturally and maximizes your commissions.
+
+* **Always up-to-date** - New products are added to Amazon every day and old products are removed or go out of stock. ProductWidgets constantly checks whether all products are still available and automatically adds new ones to your widgets to see if they perform well.
+
+* **Geo-targeted** - Your visitors come from all over the world, and showing products from the US to a visitor from Italy would not be very smart. Amazon is available in many different countries, and ProductsWidgets makes sure that your visitors always see products from their local Amazon store.
+
+* **Simple Integration** - Adding a widget to your site couldn't be easier: just install the plugin, pick from a standard widget layout (Leaderboard, Skyscraper etc.) and copy the shortcode to a post of the layout of your blog. Your widget will appear immediately and be optimized during the next few hours.
+
+* **Unobtrusive** - We understand you don't want ugly Flash widgets on your blog that are heavily branded and destroy your site layout! Our widgets are plain and simple and blend in to your site layout easily. We put the product images front and center since they receive the most clicks.
+
+* **Fast** - Our widgets are fast! On average, They load in less than 100 milliseconds and use asynchronous loading techniques to not slow down your site.
 
 == Installation ==
 
@@ -27,13 +43,27 @@ Activate the plugin from the plugins page.
 
 = Create your free ProductWidgets account =
 
-Open the ProductWidgets settings page (ProductWidgets > Settings) to create your free account. This is necessary so that the widgets you will create can be connected to your account.
+To be able to use the service, you need to create a free ProductWidgets account. You will receive an API key that is used by the plugin to talk to the ProductWidgets API and manage your widgets.
 
-Note that creating an account is free and does not include any other obligations for you.
+**Don't worry! No personal data will be submitted! Creating an account is completely free and does not create any further obligations for you!**
+
+Open the ProductWidgets settings page (ProductWidgets > Settings) to create your free account.
+
+= Enter your affiliate data =
+
+To make sure that you receive the commissions for the products you promote, you need to enter your affiliate data in the plugin settings.
+
+**Right now only Amazon is supported as a affiliate platform, so you need to enter your Amazon affiliate tracking IDs. More affiliate platforms will be available soon.**
+
+Open the ProductWidgets settings page (ProductWidgets > Settings) and enter your Amazon affiliate tracking IDs. The Amazon stores in each of the supported countries (UK, US, Canada, Germany, Spain, France, and Italy) each have a separate affiliate program, so you need to sign up to each program individually. The links to the programs are included on the settings page and signing up normally takes only a few minutes.
 
 = Create your first widget =
 
-After you have created your free account, you can create your first widget. Simply click on "New widget" and select a layout. Once your widget is created, you will see a shortcode in the form of [productwidget id="123"] (123 being the ID of your newly created widget). To add your new widget to a page or post, simply copy and paste this shortcode and add it where you want the widget to appear.
+Once you created your free account, you are all set to implement your first widget!
+
+Go to the list of widget layouts (ProductWidgets > Widget Layouts) and pick the one you want to implement. (hint: to see a preview of how the widget will look like, click on "Preview"). Copy the shortcode of the widget layout and paste it where you want the widget to appear.
+
+Note that you can add the shortcode to a blog post, a page, the layout or even a sidebar widget (for the latter, add a Wordpress "text" widget to the sidebar and enter the shortcode there).
 
 == Frequently Asked Questions ==
 
@@ -41,7 +71,7 @@ After you have created your free account, you can create your first widget. Simp
 
 Check out the [Wordpress section on the ProductWidgets website](http://www.productwidgets.com/publishers/wordpress/) for more information about this plugin or get in touch with us [via email](mailto:hello@productwidgets.com).
 
-= What happens when the ProductWidgets website is down? Will my widgets still appear? =
+= What happens when the ProductWidgets website/service is down? Will my widgets still appear? =
 
 Yes! The widgets are cached on a global content delivery network (CDN), which makes then appear very fast around the world, even if the ProductWidgets service is temporarily not available.
 
