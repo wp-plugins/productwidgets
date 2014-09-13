@@ -45,6 +45,10 @@ We understand you don't want ugly Flash widgets on your blog that are heavily br
 
 Our widgets are fast! On average, they load in less than 100 milliseconds and use asynchronous loading techniques to not slow down your site.
 
+#### More questions?
+
+Check out the [ProductWidgets website](http://www.productwidgets.com/publishers/wordpress/) for more info and don't hesitate to [get in touch via mail](mailto:hello@productwidgets.com) if you have any more questions!
+
 == Installation ==
 
 = Install the plugin directly from Wordpress or manually =
@@ -91,7 +95,7 @@ Yes! The widgets are cached on a global content delivery network (CDN), which ma
 
 = I have more questions! =
 
-Check out the [Wordpress section on the ProductWidgets website](http://www.productwidgets.com/publishers/wordpress/) for more information about this plugin or get in touch with us [via email](mailto:hello@productwidgets.com).
+Check out the [ProductWidgets website](http://www.productwidgets.com/publishers/wordpress/) for more information about this plugin or get in touch with us [via email](mailto:hello@productwidgets.com).
 
 == Changelog ==
 
