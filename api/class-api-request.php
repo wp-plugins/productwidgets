@@ -135,6 +135,13 @@ class Api_Request {
     return $response;
   }
 
+  public function expire_cache($url) {
+    if ($this->get_config('cache_enabled')) {
+      $transient_name = $this->transient_name($url);
+      delete_transient($transient_name);
+    }
+  }
+
   private function transient_name($name) {
     return $this->get_config('cache_prefix').md5($name);
   }
