@@ -99,6 +99,10 @@ Check out the [ProductWidgets website](http://www.productwidgets.com/publishers/
 
 == Changelog ==
 
+= 1.0.3 =
+
+* Fix problem with cached affiliate IDs
+
 = 1.0.2 =
 
 * Change widget URL
