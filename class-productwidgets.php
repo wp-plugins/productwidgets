@@ -89,6 +89,12 @@ class Product_Widgets {
     $this->display_url = 'http://d.productwidgets'.(PW_DEV ? '.dev' : '.com');
     $this->plugin_url = trailingslashit(trailingslashit(plugins_url()).$this->plugin_slug);
 
+    $api_key = get_option('api_key');
+    if (empty($api_key)) {
+      $api_key = substr(md5(microtime().rand()), 0, 20);
+      update_option('api_key', $api_key);
+    }
+
     // Register admin settings
     add_action('admin_init', array($this, 'register_admin_settings'));
 
@@ -299,7 +305,6 @@ class Product_Widgets {
    */
   public function generate_javascript_tag($layout) {
     $api_key = get_option('api_key');
-    if (empty($api_key)) return 'ProductWidgets: API Key not set.';
     return '<script src="'.$this->display_url.'/'.$api_key.'/'.$layout.'/widget.js" type="text/javascript"></script>'."\n";
   }
 

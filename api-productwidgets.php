@@ -30,22 +30,7 @@ class Api extends Api_Request {
     return "";
   }
 
-  public function signup() {
-    $url = $this->build_url("account");
-    $args = array("product_source_name" => "amazon");
-    $response = $this->post($url, $args)->get_response();
-    return $response["results"];
-  }
-
-  // API Key must be passed into function because it's not yet saved as option.
-  public function get_account($api_key) {
-    $url = $this->build_url("account", array("api_key" => $api_key));
-    $response = $this->get($url)->get_response();
-    return $response["results"];
-  }
-
   public function get_tracking_ids() {
-    $api_key = get_option("api_key");
     $url = $this->tracking_ids_url();
     $response = $this->get($url)->get_response();
     return $response["results"]["configuration"]["tracking_ids"];

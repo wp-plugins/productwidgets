@@ -6,8 +6,6 @@
    * @link      http://www.productwidgets.com/publishers/wordpress/
    * @copyright 2014 kraut computing UG (haftungsbeschränkt)
    */
-  
-  $api_key = get_option("api_key");
 ?>
 <div class='wrap'>
   <h2>
@@ -20,7 +18,7 @@
         To add a new widget to a post or page, pick a widget layout, copy the shortcode, and paste it where you want the widget to appear.
       </p>
       <p>
-        Initially the widget will contain popular Amazon products from the categories books, electronics, and DVDs & Blu-Rays, but soon after you implement a new widget, the ProductWidgets algorithm will analyze the page that contains the widget and pick Amazon products that match your content better.
+        Initially the widget will contain popular Amazon products from the some default categories (books, electronics, and DVDs & Blu-Rays), but soon after you implement a new widget, the ProductWidgets algorithm will analyze the page that contains the widget and pick Amazon products that match your content better.
       </p>
       <p>
         Unfortunately it is not yet possible to create new widget layouts from this screen, but
@@ -45,9 +43,6 @@
   
         <?php if (!empty($api_error)) { ?>
           <?php include_once("partials/_api-error.php") ?>
-  
-        <?php } else if (empty($api_key)) { ?>
-          <?php include_once("partials/_signup.php") ?>
   
         <?php } else { ?>
           <p>
