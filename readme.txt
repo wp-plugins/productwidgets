@@ -1,6 +1,7 @@
 === ProductWidgets ===
+
 Contributors: krautcomputing
-Tags: affiliate widget, affiliate widgets, affiliate, affiliate plugin, affiliate plugins, affiliate marketing, amazon affiliate, amazon affiliates, amazon associate, amazon associates
+Tags: affiliate-widget, affiliate-widgets, affiliate, affiliate-plugin, affiliate-plugins, affiliate-marketing, amazon-affiliate, amazon-affiliates, amazon-associate, amazon-associates
 Requires at least: 3.0
 Tested up to: 4.0
 Stable tag: trunk
