@@ -15,7 +15,8 @@
  */
 class Api extends Api_Request {
   public function __construct($config) {
-    add_filter("http_request_timeout", function($timeout) { return 30; });
+    function _timeout($timeout) { return 30; }
+    add_filter("http_request_timeout", "_timeout");
 
     parent::__construct($config);
   }
