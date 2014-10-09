@@ -100,6 +100,10 @@ Check out the [ProductWidgets website](http://www.productwidgets.com/publishers/
 
 == Changelog ==
 
+= 1.1.1 =
+
+* Bugfix to support PHP < 5.3
+
 = 1.1.0 =
 
 * Remove need for signup
