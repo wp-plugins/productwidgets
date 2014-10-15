@@ -111,6 +111,9 @@ class Product_Widgets {
     // Replace widget tags in the page content
     add_shortcode('productwidget', array($this, 'replace_widget_tag'));
 
+    // Enable shortcode in widgets
+    add_filter('widget_text', 'do_shortcode');
+
     // Respond to Ajax calls from admin pages
     add_action('wp_ajax_get_tracking_ids', array($this, 'get_tracking_ids_callback'));
     add_action('wp_ajax_get_widget_layouts', array($this, 'get_widget_layouts_callback'));
