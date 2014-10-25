@@ -62,17 +62,11 @@ Check out the [ProductWidgets website](http://www.productwidgets.com/publishers/
 
 Activate the plugin from the plugins page of your Wordpress admin.
 
-= Create your free ProductWidgets account =
+= Enter your affiliate IDs =
 
-To be able to use the service, you need to create a free ProductWidgets account. You will receive an API key that is used by the plugin to talk to the ProductWidgets API and manage your widgets.
+Note: this step can be skipped if you just want to test out the widgets on your page. You can always enter your affiliate IDs later.
 
-*Don't worry! No personal data will be submitted! Creating an account is completely free and does not create any further obligations for you!*
-
-Open the ProductWidgets settings page (ProductWidgets > Settings) to create your free account.
-
-= Enter your affiliate data =
-
-To make sure that you receive the commissions for the products you promote, you need to enter your affiliate data in the plugin settings.
+To make sure that you receive the commissions for the products you promote, you need to enter your affiliate IDs in the plugin settings.
 
 *Right now only Amazon is supported as a affiliate platform, so you need to enter your Amazon affiliate tracking IDs. More affiliate platforms will be available soon.*
 
@@ -80,7 +74,7 @@ Open the ProductWidgets settings page (ProductWidgets > Settings) and enter your
 
 = Create your first widget =
 
-Once you created your free account, you are all set to implement your first widget!
+Now you are all set to implement your first widget!
 
 Go to the list of widget layouts (ProductWidgets > Widget Layouts) and pick the one you want to implement. (hint: to see a preview of how the widget will look like, click on "Preview"). Copy the shortcode of the widget layout and paste it where you want the widget to appear.
 
