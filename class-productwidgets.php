@@ -86,7 +86,7 @@ class Product_Widgets {
    * @since     1.0.0
    */
   private function __construct() {
-    $this->display_url = 'http://d.productwidgets'.(PW_DEV ? '.dev' : '.com');
+    $this->display_url = '//d.productwidgets'.(PW_DEV ? '.dev' : '.com');
     $this->plugin_url = trailingslashit(trailingslashit(plugins_url()).$this->plugin_slug);
 
     $api_key = get_option('api_key');
