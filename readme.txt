@@ -94,6 +94,11 @@ Check out the [ProductWidgets website](http://www.productwidgets.com/publishers/
 
 == Changelog ==
 
+= 1.1.3 =
+
+* Bugfix to remove error in old PHP versions
+* Load widgets with current site protol, i.e. making them work with HTTPS
+
 = 1.1.2 =
 
 * Bugfix to enable shortcode in sidebar widgets
