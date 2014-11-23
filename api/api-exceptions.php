@@ -17,35 +17,55 @@
 // 400 Bad Request
 class BadRequestException extends Exception {
   public function __construct($error) {
-    parent::__construct($error, E_USER_ERROR, null);
+    if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+      parent::__construct($error, E_USER_ERROR, null);
+    } else {
+      parent::__construct($error, E_USER_ERROR);
+    }
   }
 }
 
 // 401 Unauthorized
 class UnauthorizedRequestException extends Exception {
   public function __construct($error) {
-    parent::__construct($error, E_USER_ERROR, null);
+    if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+      parent::__construct($error, E_USER_ERROR, null);
+    } else {
+      parent::__construct($error, E_USER_ERROR);
+    }
   }
 }
 
 // 404 Not Found
 class NotFoundException extends Exception {
   public function __construct($error) {
-    parent::__construct($error, E_USER_ERROR, null);
+    if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+      parent::__construct($error, E_USER_ERROR, null);
+    } else {
+      parent::__construct($error, E_USER_ERROR);
+    }
   }
 }
 
 // 422 Unprocessable Entity
 class UnprocessableEntityException extends Exception {
   public function __construct($error) {
-    parent::__construct($error, E_USER_ERROR, null);
+    if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+      parent::__construct($error, E_USER_ERROR, null);
+    } else {
+      parent::__construct($error, E_USER_ERROR);
+    }
   }
 }
 
 // 500 Internal Server Errpr
 class InternalServerErrorException extends Exception {
   public function __construct($error) {
-    parent::__construct($error, E_USER_ERROR, null);
+    if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+      parent::__construct($error, E_USER_ERROR, null);
+    } else {
+      parent::__construct($error, E_USER_ERROR);
+    }
   }
 }
 
@@ -61,7 +81,12 @@ class UnknownErrorException extends Exception {
     } else {
       $message = "Unknown error";
     }
-    parent::__construct($message, E_USER_ERROR, null);
+
+    if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+      parent::__construct($message, E_USER_ERROR, null);
+    } else {
+      parent::__construct($message, E_USER_ERROR);
+    }
   }
 }
 
@@ -81,6 +106,11 @@ class HttpRequestFailedException extends Exception {
       }
       $message = rtrim($message, ",");
     }
-    parent::__construct($message, E_USER_ERROR, null);
+
+    if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+      parent::__construct($message, E_USER_ERROR, null);
+    } else {
+      parent::__construct($message, E_USER_ERROR);
+    }
   }
 }
