@@ -94,6 +94,10 @@ Check out the [ProductWidgets website](http://www.productwidgets.com/publishers/
 
 == Changelog ==
 
+= 1.1.4 =
+
+* Access ProductWidgets API via HTTPS only
+
 = 1.1.3 =
 
 * Bugfix to remove error in old PHP versions
