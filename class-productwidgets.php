@@ -120,7 +120,7 @@ class Product_Widgets {
 
     // Initialize the API
     $this->api = new Api(array(
-      'url'     => 'http://api.productwidgets'.(PW_DEV ? '.dev' : '.com'),
+      'url'     => PW_DEV ? 'http://api.productwidgets.dev' : 'https://api.productwidgets.com',
       'version' => 1
     ));
   }
