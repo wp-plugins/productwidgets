@@ -94,6 +94,11 @@ Check out the [ProductWidgets website](http://www.productwidgets.com/publishers/
 
 == Changelog ==
 
+= 1.1.5 =
+
+* Fix API calls
+* Fix layout names
+
 = 1.1.4 =
 
 * Access ProductWidgets API via HTTPS only
