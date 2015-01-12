@@ -1,1 +1,1 @@
-<textarea class='shortcode autoselect' readonly><?php echo $item["wp_shortcode"] ?></textarea>
+<textarea class='shortcode autoselect' readonly>[productwidget layout="<?php echo $item["identifier"] ?>"]</textarea>

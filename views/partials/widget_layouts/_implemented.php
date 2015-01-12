@@ -2,12 +2,12 @@
   <p>
     This widget layout has
     
-          <?php if ($item["widget_count"] == 0) { ?>
+          <?php if ($item["widgets_count"] == 0) { ?>
             not been implemented on any pages.
     
           <?php } else { ?>
             been implemented on
-    <?php echo $item["widget_count"]." page".($item["widget_count"] != 1 ? "s" : null) ?>.
+    <?php echo $item["widgets_count"]." page".($item["widgets_count"] != 1 ? "s" : null) ?>.
     
           <?php } ?>
   </p>
@@ -23,5 +23,5 @@
   </p>
 </div>
 <a class='thickbox' href='#TB_inline?width=600&inlineId=stats-<?php echo $item["identifier"] ?>'>
-  <?php echo $item["widget_count"]." page".($item["widget_count"] != 1 ? "s" : null) ?>
+  <?php echo $item["widgets_count"]." page".($item["widgets_count"] != 1 ? "s" : null) ?>
 </a>
