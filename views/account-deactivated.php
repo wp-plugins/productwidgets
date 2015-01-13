@@ -8,7 +8,15 @@
  ?>
 <div class='wrap'>
   <h2>
-    <?php echo esc_html(get_admin_page_title()) ?>
+    Account deactivated
   </h2>
-  <?php include('partials/_flash.php') ?>
 </div>
+<p>
+  Unfortunately your account was deactivated.
+</p>
+<p>
+  If you think this was done by mistaked, please
+  <a href='mailto:hello@productwidgets.com'>
+    get in touch via email.
+  </a>
+</p>
