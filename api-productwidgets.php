@@ -3,8 +3,8 @@
  * @package   ProductWidgets
  * @author    Kraut Computing <info@krautcomputing.com>
  * @license   GPL-2.0
- * @link      http://www.productwidgets.com/publishers/wordpress/
- * @copyright 2014 kraut computing UG (haftungsbeschränkt)
+ * @link      https://www.productwidgets.com/
+ * @copyright 2015 kraut computing UG (haftungsbeschränkt)
  */
 
 /**
@@ -31,23 +31,17 @@ class Api extends Api_Request {
     return "";
   }
 
-  public function get_tracking_ids() {
-    $url = $this->tracking_ids_url();
-    $response = $this->get($url)->get_response();
-    return $response["results"]["configuration"]["tracking_ids"];
+  public function create_account($args) {
+    $url = $this->build_url("account");
+    $response = $this->post($url, $args)->get_response();
+    return $response["results"];
   }
 
-  public function update_tracking_ids($tracking_ids) {
+  public function get_account() {
     $api_key = get_option("api_key");
-    $url = $this->build_url("product_source_associations/amazon");
-    $args = array("api_key" => $api_key, "configuration" => array("tracking_ids" => $tracking_ids));
-    $response = $this->put($url, $args)->get_response();
-
-    // Expire cached URL for tracking IDs
-    $tracking_ids_url = $this->tracking_ids_url();
-    $this->expire_cache($tracking_ids_url);
-
-    return $response["results"]["configuration"]["tracking_ids"];
+    $url = $this->build_url("account", array("api_key" => $api_key));
+    $response = $this->get($url)->get_response();
+    return $response["results"];
   }
 
   public function get_widget_layouts() {
@@ -55,10 +49,5 @@ class Api extends Api_Request {
     $url = $this->build_url("widget_layouts", array("api_key" => $api_key));
     $response = $this->get($url)->get_response();
     return $response["results"];
-  }
-
-  private function tracking_ids_url() {
-    $api_key = get_option("api_key");
-    return $this->build_url("product_source_associations/amazon", array("api_key" => $api_key));
   }
 }

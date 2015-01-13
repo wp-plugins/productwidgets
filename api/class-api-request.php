@@ -3,8 +3,8 @@
  * @package   ProductWidgets
  * @author    Kraut Computing <info@krautcomputing.com>
  * @license   GPL-2.0
- * @link      http://www.productwidgets.com/publishers/wordpress/
- * @copyright 2014 kraut computing UG (haftungsbeschränkt)
+ * @link      https://www.productwidgets.com/
+ * @copyright 2015 kraut computing UG (haftungsbeschränkt)
  */
 
 /**
@@ -14,7 +14,7 @@
  * @author  Kraut Computing <info@krautcomputing.com>
  */
 class Api_Request {
-  private $mConfig = array();
+  private $config = array();
 
   /**
    * Default constructor
@@ -155,20 +155,20 @@ class Api_Request {
     throw new UnknownErrorException($response);
   }
 
-  private function create_response_object($res) {
-    $response = new Api_Response();
-    $response->set_http_code(wp_remote_retrieve_response_code($res));
-    $response->set_headers(wp_remote_retrieve_headers($res));
-    $response->set_response(wp_remote_retrieve_body($res));
+  private function api_response($response) {
+    $api_response = new Api_Response();
+    $api_response->set_http_code(wp_remote_retrieve_response_code($response));
+    $api_response->set_headers(wp_remote_retrieve_headers($response));
+    $api_response->set_response(wp_remote_retrieve_body($response));
 
-    if ($response->get_http_code() != '200') {
-      $response_content = $response->get_response();
+    if ($api_response->get_http_code() != '200') {
+      $response_content = $api_response->get_response();
       if (!is_null($response_content) && array_key_exists("error_description", $response_content)) {
         $error = $response_content["error_description"];
       } else {
         $error = $response_content;
       }
-      switch ($response->get_http_code()) {
+      switch ($api_response->get_http_code()) {
         case '400':
           throw new BadRequestException($error);
         case '401':
@@ -180,43 +180,43 @@ class Api_Request {
         case '500':
           throw new InternalServerErrorException($error);
         default:
-          throw new UnknownErrorException($res);
+          throw new UnknownErrorException($response);
       }
     }
 
-    return $response;
+    return $api_response;
   }
 
   private function perform_get($url) {
-    $res = wp_remote_get($url);
-    if (is_wp_error($res)) {
-      $this->handle_response_error($res, $url);
+    $response = wp_remote_get($url);
+    if (is_wp_error($response)) {
+      $this->handle_response_error($response, $url);
       die();
     } else {
-      $response = $this->create_response_object($res);
-      return $response;
+      $api_response = $this->api_response($response);
+      return $api_response;
     }
   }
 
   private function perform_post($url, $args) {
-    $res = wp_remote_post($url, array("body" => $args));
-    if (is_wp_error($res)) {
-      $this->handle_response_error($res, $url);
+    $response = wp_remote_post($url, array("body" => $args));
+    if (is_wp_error($response)) {
+      $this->handle_response_error($response, $url);
       die();
     } else {
-      $response = $this->create_response_object($res);
-      return $response;
+      $api_response = $this->api_response($response);
+      return $api_response;
     }
   }
 
   private function perform_head($url) {
-    $res = wp_remote_head($url);
-    if (is_wp_error($res)) {
-      $this->handle_response_error($res, $url);
+    $response = wp_remote_head($url);
+    if (is_wp_error($response)) {
+      $this->handle_response_error($response, $url);
       die();
     } else {
-      $response = $this->create_response_object($res);
-      return $response;
+      $api_response = $this->api_response($response);
+      return $api_response;
     }
   }
 
@@ -233,21 +233,16 @@ class Api_Request {
   }
 
   public function get_config($var) {
-    return (isset($this->mConfig[$var])) ? $this->mConfig[$var] : null;
+    return (isset($this->config[$var])) ? $this->config[$var] : null;
   }
 
-  /**
-   *Recursive function
-   * @param type $var
-   * @param type $value
-   */
   public function set_config($var, $value = null) {
     if (is_array($var)) {
-      foreach($var AS $k => $v) {
+      foreach($var as $k => $v) {
         $this->set_config($k, $v);
       }
     } else {
-      $this->mConfig[$var] = $value;
+      $this->config[$var] = $value;
     }
   }
 }
