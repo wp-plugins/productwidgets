@@ -89,8 +89,8 @@ class Product_Widgets {
     $this->display_url = '//d.productwidgets'.(PW_DEV ? '.dev' : '.com');
     $this->plugin_url = trailingslashit(trailingslashit(plugins_url()).$this->plugin_slug);
 
-    // Register admin settings
-    add_action('admin_init', array($this, 'register_admin_settings'));
+    // // Register admin settings
+    // add_action('admin_init', array($this, 'register_admin_settings'));
 
     // Add admin menu
     add_action('admin_menu', array($this, 'add_admin_menu'));
@@ -105,12 +105,12 @@ class Product_Widgets {
     // Replace widget shortcodes in the page content
     add_shortcode('productwidget', array($this, 'replace_widget_shortcode'));
 
-    // Enable shortcode in widgets
+    // Enable shortcodes in widgets
     add_filter('widget_text', 'do_shortcode');
 
     // Respond to Ajax calls from admin pages
-    add_action('wp_ajax_get_widgets', array($this, 'get_widgets_callback'));
-    add_action('wp_ajax_get_widget_layouts', array($this, 'get_widget_layouts_callback'));
+    add_action('wp_ajax_get_widgets',            array($this, 'get_widgets_callback'));
+    add_action('wp_ajax_get_widget_layouts',     array($this, 'get_widget_layouts_callback'));
     add_action('wp_ajax_parse_widget_shortcode', array($this, 'parse_widget_shortcode_callback'));
 
     // Initialize the API
@@ -150,32 +150,32 @@ class Product_Widgets {
     }
   }
 
-  /**
-   * Register admin settings
-   *
-   * @since     1.0.0
-   */
-  public function register_admin_settings() {
-    add_settings_section(
-      'general_settings_section',                 // ID used to identify this section and with which to register options
-      '',                                         // Title to be displayed on the administration page
-      '',                                         // Callback used to render the description of the section
-      $this->plugin_slug                          // Page on which to add this section of options
-    );
+  // /**
+  //  * Register admin settings
+  //  *
+  //  * @since     1.0.0
+  //  */
+  // public function register_admin_settings() {
+  //   add_settings_section(
+  //     'general_settings_section',                 // ID used to identify this section and with which to register options
+  //     '',                                         // Title to be displayed on the administration page
+  //     '',                                         // Callback used to render the description of the section
+  //     $this->plugin_slug                          // Page on which to add this section of options
+  //   );
 
-    add_settings_field(
-      'api_key_field',                            // ID used to identify the field throughout the theme
-      'API Key',                                  // The label to the left of the option interface element
-      array($this, 'api_key_field'),              // The name of the function responsible for rendering the option interface
-      $this->plugin_slug,                         // The page on which this option will be displayed
-      'general_settings_section'                  // The name of the section to which this field belongs
-    );
+  //   add_settings_field(
+  //     'api_key_field',                            // ID used to identify the field throughout the theme
+  //     'API Key',                                  // The label to the left of the option interface element
+  //     array($this, 'api_key_field'),              // The name of the function responsible for rendering the option interface
+  //     $this->plugin_slug,                         // The page on which this option will be displayed
+  //     'general_settings_section'                  // The name of the section to which this field belongs
+  //   );
 
-    register_setting(
-      $this->plugin_slug,
-      'api_key'
-    );
-  }
+  //   register_setting(
+  //     $this->plugin_slug,
+  //     'api_key'
+  //   );
+  // }
 
   /**
    * Render API Key field
@@ -233,15 +233,15 @@ class Product_Widgets {
         array($this, 'display_add_widget_page')
       );
 
-      // Add sub-level menu "Settings"
-      add_submenu_page(
-        $this->plugin_slug.'/widgets.php',
-        'Settings',
-        'Settings',
-        'manage_options',
-        $this->plugin_slug.'/settings.php',
-        array($this, 'display_settings_page')
-      );
+      // // Add sub-level menu "Settings"
+      // add_submenu_page(
+      //   $this->plugin_slug.'/widgets.php',
+      //   'Settings',
+      //   'Settings',
+      //   'manage_options',
+      //   $this->plugin_slug.'/settings.php',
+      //   array($this, 'display_settings_page')
+      // );
 
       // Add sub-level menu "Signup"
       // Make it a child of another submenu page,
@@ -292,10 +292,10 @@ class Product_Widgets {
    *
    * @since    1.0.0
    */
-  public function display_settings_page() {
-    if ($this->perform_checks())
-      include_once('views/settings.php');
-  }
+  // public function display_settings_page() {
+  //   if ($this->perform_checks())
+  //     include_once('views/settings.php');
+  // }
 
   /**
    * Perform checks
@@ -329,11 +329,12 @@ class Product_Widgets {
   }
 
   /**
-   * Add settings action link to the plugins page.
+   * Add action link to the plugins page.
    *
    * @since    1.0.0
    */
   public function add_action_links($links) {
+    $api_key = get_option('api_key');
     $account_activated_at = get_option('account_activated_at');
     if (empty($api_key) || empty($account_activated_at)) {
       $link = array(
@@ -341,7 +342,7 @@ class Product_Widgets {
       );
     } else {
       $link = array(
-        'settings' => '<a href="'.admin_url('admin.php?page='.$this->plugin_slug.'/settings.php').'">Settings</a>'
+        'widgets' => '<a href="'.admin_url('admin.php?page='.$this->plugin_slug.'/widgets.php').'">Widgets</a>'
       );
     }
     return array_merge(

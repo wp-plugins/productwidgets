@@ -15,7 +15,7 @@
   Unfortunately your account was deactivated.
 </p>
 <p>
-  If you think this was done by mistaked, please
+  If you think this was done by mistake, please
   <a href='mailto:hello@productwidgets.com'>
     get in touch via email.
   </a>

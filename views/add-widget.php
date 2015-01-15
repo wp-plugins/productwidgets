@@ -26,7 +26,7 @@
         </th>
         <td>
           <p>
-            <input checked='checked' id='effect_none' name='effect' type='radio' value=''>
+            <input checked id='effect_none' name='effect' type='radio' value=''>
             <label for='effect_none'>
               None
             </label>
@@ -45,13 +45,13 @@
         </th>
         <td>
           <p>
-            <input disabled='disabled' id='products_automated_content' name='products' type='radio' value='automated_content'>
-            <label disabled='disabled' for='products_automated_content'>
+            <input disabled id='products_automated_content' name='products' type='radio' value='automated_content'>
+            <label disabled for='products_automated_content'>
               Find products related to the page content (coming soon)
             </label>
           </p>
           <p>
-            <input checked='checked' id='products_automated_title' name='products' type='radio' value='automated_title'>
+            <input checked id='products_automated_title' name='products' type='radio' value='automated_title'>
             <label for='products_automated_title'>
               Find products related to the page title
             </label>
