@@ -94,6 +94,14 @@ Check out the [ProductWidgets website](https://www.productwidgets.com/) for more
 
 == Changelog ==
 
+= 2.0.1 =
+
+* Comments, formatting, fix typos, fix html5 boolean attributes
+* Update signup page
+* Remove settings page
+* Remove admin settings code
+* Fix adding action links
+
 = 2.0.0 =
 
 * Refactor lots of things
