@@ -94,6 +94,10 @@ Check out the [ProductWidgets website](https://www.productwidgets.com/) for more
 
 == Changelog ==
 
+= 2.0.2 =
+
+* Add Amazon tracking IDs to settings page again
+
 = 2.0.1 =
 
 * Comments, formatting, fix typos, fix html5 boolean attributes
