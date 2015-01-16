@@ -8,7 +8,7 @@ Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Monetize your website with intelligent affiliate widgets displaying products that perfectly fit your unique content.
+The Smart Alternative to Banner Ads - Monetise your website by promoting relevant products to your visitors.
 
 == Description ==
 
@@ -48,7 +48,7 @@ Our widgets are fast! On average, they load in less than 100 milliseconds and us
 
 #### More questions?
 
-Check out the [ProductWidgets website](http://www.productwidgets.com/publishers/wordpress/) for more info and don't hesitate to [get in touch via mail](mailto:hello@productwidgets.com) if you have any more questions!
+Check out the [ProductWidgets website](https://www.productwidgets.com/) for more info and don't hesitate to [get in touch via email](mailto:hello@productwidgets.com) if you have any more questions!
 
 == Installation ==
 
@@ -90,9 +90,27 @@ Yes! The widgets are cached on a global content delivery network (CDN), which ma
 
 = I have more questions! =
 
-Check out the [ProductWidgets website](http://www.productwidgets.com/publishers/wordpress/) for more information about this plugin or get in touch with us [via email](mailto:hello@productwidgets.com).
+Check out the [ProductWidgets website](https://www.productwidgets.com/) for more information about this plugin or get in touch with us [via email](mailto:hello@productwidgets.com).
 
 == Changelog ==
+
+= 2.0.2 =
+
+* Add Amazon tracking IDs to settings page again
+
+= 2.0.1 =
+
+* Comments, formatting, fix typos, fix html5 boolean attributes
+* Update signup page
+* Remove settings page
+* Remove admin settings code
+* Fix adding action links
+
+= 2.0.0 =
+
+* Refactor lots of things
+* Bring back need to sign up before using the plugin
+* Make adding and previewing a widget easier on a separate screen
 
 = 1.1.5 =
 

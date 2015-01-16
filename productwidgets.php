@@ -3,17 +3,17 @@
  * @package   ProductWidgets
  * @author    Kraut Computing <info@krautcomputing.com>
  * @license   GPL-2.0
- * @link      http://www.productwidgets.com/publishers/wordpress/
- * @copyright 2014 kraut computing UG (haftungsbeschränkt)
+ * @link      https://www.productwidgets.com/
+ * @copyright 2015 kraut computing UG (haftungsbeschränkt)
  *
  * @wordpress-plugin
  * Plugin Name: ProductWidgets
- * Plugin URI:  http://www.productwidgets.com/publishers/wordpress/
- * Description: Monetize your website with intelligent affiliate widgets displaying products that perfectly fit your unique content.
+ * Plugin URI:  https://www.productwidgets.com/
+ * Description: The Smart Alternative to Banner Ads - Monetise your website by promoting relevant products to your visitors.
  * Text Domain: productwidgets
- * Version:     1.1.5
+ * Version:     2.0.2
  * Author:      Kraut Computing
- * Author URI:  http://www.krautcomputing.com
+ * Author URI:  https://www.krautcomputing.com
  * License:     GPL-2.0
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
