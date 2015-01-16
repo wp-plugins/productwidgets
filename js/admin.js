@@ -1,10 +1,12 @@
 (function() {
   (function($) {
-    var disableFormButtonsAfterSubmit, enableTextareaAutoselect, formButtonsOriginalAttrName, initPreviewButtons, loadLazyLoad, loadWidgetLayouts, loadWidgets, reenableFormButtons, round, watchKeywordInputs, watchWidgetForm;
+    var disableFormButtonsAfterSubmit, enableTextareaAutoselect, formButtonsOriginalAttrName, initPreviewButtons, loadAmazonTrackingIDs, loadLazyLoad, loadWidgetLayouts, loadWidgets, reenableFormButtons, round, watchKeywordInputs, watchWidgetForm;
     $(function() {
       enableTextareaAutoselect();
       disableFormButtonsAfterSubmit();
-      if ($('body.toplevel_page_productwidgets-widgets').length) {
+      if ($('body.productwidgets_page_productwidgets-settings').length) {
+        return loadAmazonTrackingIDs();
+      } else if ($('body.toplevel_page_productwidgets-widgets').length) {
         return loadWidgets();
       } else if ($('body.productwidgets_page_productwidgets-add-widget').length) {
         loadWidgetLayouts();
@@ -23,6 +25,50 @@
         var $submit;
         $submit = $('input[type="submit"]', this);
         return $submit.attr(formButtonsOriginalAttrName, $submit.val()).val('Please wait...').attr('disabled', 'disabled');
+      });
+    };
+    loadAmazonTrackingIDs = function() {
+      var countries, signup_links;
+      countries = {
+        de: 'Amazon.de (Germany)',
+        gb: 'Amazon.co.uk (United Kingdom)',
+        us: 'Amazon.com (United States)',
+        ca: 'Amazon.ca (Canada)',
+        es: 'Amazon.es (Spain)',
+        fr: 'Amazon.fr (France)',
+        it: 'Amazon.it (Italy)'
+      };
+      signup_links = {
+        de: 'https://partnernet.amazon.de/',
+        gb: 'https://affiliate-program.amazon.co.uk/',
+        us: 'https://affiliate-program.amazon.com/',
+        ca: 'https://associates.amazon.ca/',
+        es: 'https://afiliados.amazon.es/',
+        fr: 'https://partenaires.amazon.fr/',
+        it: 'https://programma-affiliazione.amazon.it/'
+      };
+      return $.get("" + ajaxurl + "?action=get_amazon_tracking_ids", function(response) {
+        var $row, $table, $td, $th, locale, trackingId;
+        $('.ajax-loader').hide();
+        if (typeof response === 'string') {
+          return $('#no-settings').show();
+        } else {
+          $table = $('#amazon table');
+          for (locale in response) {
+            trackingId = response[locale];
+            $row = $('tr:first-child', $table).clone();
+            $th = $('th', $row);
+            $td = $('td', $row);
+            $th.text(countries[locale]);
+            $('input', $td).attr('name', "tracking_ids[" + locale + "]").val(trackingId);
+            if (!(trackingId != null ? trackingId.length : void 0)) {
+              $td.append("<span>Sign up here: <a href='" + signup_links[locale] + "' target='_blank'>" + signup_links[locale] + "</a></span>");
+            }
+            $row.appendTo($table);
+          }
+          $('tr:first-child', $table).remove();
+          return $('#amazon').show();
+        }
       });
     };
     reenableFormButtons = function() {

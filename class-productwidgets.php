@@ -109,9 +109,10 @@ class Product_Widgets {
     add_filter('widget_text', 'do_shortcode');
 
     // Respond to Ajax calls from admin pages
-    add_action('wp_ajax_get_widgets',            array($this, 'get_widgets_callback'));
-    add_action('wp_ajax_get_widget_layouts',     array($this, 'get_widget_layouts_callback'));
-    add_action('wp_ajax_parse_widget_shortcode', array($this, 'parse_widget_shortcode_callback'));
+    add_action('wp_ajax_get_amazon_tracking_ids', array($this, 'get_amazon_tracking_ids_callback'));
+    add_action('wp_ajax_get_widgets',             array($this, 'get_widgets_callback'));
+    add_action('wp_ajax_get_widget_layouts',      array($this, 'get_widget_layouts_callback'));
+    add_action('wp_ajax_parse_widget_shortcode',  array($this, 'parse_widget_shortcode_callback'));
 
     // Initialize the API
     $this->api = new Api(array(
@@ -233,15 +234,15 @@ class Product_Widgets {
         array($this, 'display_add_widget_page')
       );
 
-      // // Add sub-level menu "Settings"
-      // add_submenu_page(
-      //   $this->plugin_slug.'/widgets.php',
-      //   'Settings',
-      //   'Settings',
-      //   'manage_options',
-      //   $this->plugin_slug.'/settings.php',
-      //   array($this, 'display_settings_page')
-      // );
+      // Add sub-level menu "Settings"
+      add_submenu_page(
+        $this->plugin_slug.'/widgets.php',
+        'Settings',
+        'Settings',
+        'manage_options',
+        $this->plugin_slug.'/settings.php',
+        array($this, 'display_settings_page')
+      );
 
       // Add sub-level menu "Signup"
       // Make it a child of another submenu page,
@@ -292,10 +293,10 @@ class Product_Widgets {
    *
    * @since    1.0.0
    */
-  // public function display_settings_page() {
-  //   if ($this->perform_checks())
-  //     include_once('views/settings.php');
-  // }
+  public function display_settings_page() {
+    if ($this->perform_checks())
+      include_once('views/settings.php');
+  }
 
   /**
    * Perform checks
@@ -349,6 +350,22 @@ class Product_Widgets {
       $link,
       $links
     );
+  }
+
+  /**
+   * Fetches the tracking IDs from the API and send them as JSON.
+   *
+   * @since    1.0.0
+   */
+  function get_amazon_tracking_ids_callback() {
+    try {
+      $amazon_tracking_ids = $this->api->get_amazon_tracking_ids();
+      wp_send_json($amazon_tracking_ids);
+    } catch (Exception $e) {
+      $error_message = "Could not load Amazon tracking IDs.";
+      include("views/partials/_exception.php");
+      die();
+    }
   }
 
   /**

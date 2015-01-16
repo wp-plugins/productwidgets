@@ -50,4 +50,28 @@ class Api extends Api_Request {
     $response = $this->get($url)->get_response();
     return $response["results"];
   }
+
+  public function get_amazon_tracking_ids() {
+    $url = $this->amazon_tracking_ids_url();
+    $response = $this->get($url)->get_response();
+    return $response["results"]["configuration"]["tracking_ids"];
+  }
+
+  public function update_amazon_tracking_ids($amazon_tracking_ids) {
+    $api_key = get_option("api_key");
+    $url = $this->build_url("product_source_associations/amazon");
+    $args = array("api_key" => $api_key, "configuration" => array("tracking_ids" => $amazon_tracking_ids));
+    $response = $this->put($url, $args)->get_response();
+
+    // Expire cached URL for tracking IDs
+    $amazon_amazon_tracking_ids_url = $this->amazon_tracking_ids_url();
+    $this->expire_cache($amazon_amazon_tracking_ids_url);
+
+    return $response["results"]["configuration"]["tracking_ids"];
+  }
+
+  private function amazon_tracking_ids_url() {
+    $api_key = get_option("api_key");
+    return $this->build_url("product_source_associations/amazon", array("api_key" => $api_key));
+  }
 }

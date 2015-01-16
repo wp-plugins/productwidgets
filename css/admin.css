@@ -160,3 +160,27 @@ body.toplevel_page_productwidgets-signup form input[type="text"],
 body.toplevel_page_productwidgets-signup form textarea {
   width: 350px;
 }
+
+/* line 3, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-settings * {
+  box-sizing: border-box;
+}
+/* line 7, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-settings .lazy,
+body.productwidgets_page_productwidgets-settings .thickbox-content {
+  display: none;
+}
+/* line 14, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-settings .ajax-loader img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+/* line 20, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-settings .exception {
+  color: #f00;
+}
+/* line 4, ../../sass/pages/_settings.scss */
+body.productwidgets_page_productwidgets-settings #no-settings,
+body.productwidgets_page_productwidgets-settings #amazon {
+  display: none;
+}
