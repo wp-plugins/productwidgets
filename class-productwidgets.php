@@ -89,16 +89,13 @@ class Product_Widgets {
     $this->display_url = '//d.productwidgets'.(PW_DEV ? '.dev' : '.com');
     $this->plugin_url = trailingslashit(trailingslashit(plugins_url()).$this->plugin_slug);
 
-    // // Register admin settings
-    // add_action('admin_init', array($this, 'register_admin_settings'));
-
     // Add admin menu
     add_action('admin_menu', array($this, 'add_admin_menu'));
 
     // Load admin styles and scripts
     add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_styles_and_scripts'));
 
-    // Add an action link pointing to the signup or settings page
+    // Add an action link to entry in plugin list
     $plugin_basename = plugin_basename(plugin_dir_path(__FILE__).$this->plugin_slug.'.php');
     add_filter('plugin_action_links_'.$plugin_basename, array($this, 'add_action_links'));
 
@@ -150,33 +147,6 @@ class Product_Widgets {
       wp_enqueue_script($this->plugin_slug.'-admin-script', $this->plugin_url.'js/admin.js', array('jquery'), self::VERSION, true);
     }
   }
-
-  // /**
-  //  * Register admin settings
-  //  *
-  //  * @since     1.0.0
-  //  */
-  // public function register_admin_settings() {
-  //   add_settings_section(
-  //     'general_settings_section',                 // ID used to identify this section and with which to register options
-  //     '',                                         // Title to be displayed on the administration page
-  //     '',                                         // Callback used to render the description of the section
-  //     $this->plugin_slug                          // Page on which to add this section of options
-  //   );
-
-  //   add_settings_field(
-  //     'api_key_field',                            // ID used to identify the field throughout the theme
-  //     'API Key',                                  // The label to the left of the option interface element
-  //     array($this, 'api_key_field'),              // The name of the function responsible for rendering the option interface
-  //     $this->plugin_slug,                         // The page on which this option will be displayed
-  //     'general_settings_section'                  // The name of the section to which this field belongs
-  //   );
-
-  //   register_setting(
-  //     $this->plugin_slug,
-  //     'api_key'
-  //   );
-  // }
 
   /**
    * Render API Key field
