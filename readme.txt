@@ -16,8 +16,6 @@ The Smart Alternative to Banner Ads - Monetise your website by promoting relevan
 
 Getting started is simple: install the plugin, place a widget shortcode in a posts or the sidebar, and products will be displayed immediately. Please note that it might take up to a three hours until the products are optimized for your content.
 
-*Currently only the Amazon affiliate network (with its many millions products in seven countries) is supported, but we are working on implementing more advertisers and affiliate networks! [Email us](mailto:hello@productwidgets.com) to let us know which ones you would like to use!*
-
 #### Fully automated
 
 ProductWidgets is a "set and forget" solution and doesn't require any ongoing work after the initial setup. The magic happens behind the scenes where our algorithms are hard at work to make sure the widgets are always up to date and show the best products for your content.
@@ -28,11 +26,11 @@ Each widget selects its products automatically based on the content of the page 
 
 #### Always up-to-date
 
-New products are added to Amazon every day and old products are removed or go out of stock. ProductWidgets constantly checks whether all products are still available and automatically adds new ones to your widgets to see if they perform well.
+New products are added every day and old products are removed or go out of stock. ProductWidgets constantly checks whether all products are still available and automatically adds new ones to your widgets to see if they perform well.
 
 #### Geo-targeted
 
-Your visitors come from all over the world, and showing products from the US to a visitor from Italy would not be very smart. Amazon is available in many different countries, and ProductsWidgets makes sure that your visitors always see products from their local Amazon store.
+Your visitors come from all over the world, and showing products from the US to a visitor from Italy would not be very smart. Products for your content are available in many different countries, and ProductsWidgets makes sure that your visitors always see products from their local shops.
 
 #### Simple integration
 
@@ -67,8 +65,6 @@ Activate the plugin from the plugins page of your Wordpress admin.
 Note: this step can be skipped if you just want to test out the widgets on your page. You can always enter your affiliate IDs later.
 
 To make sure that you receive the commissions for the products you promote, you need to enter your affiliate IDs in the plugin settings.
-
-*Right now only Amazon is supported as a affiliate platform, so you need to enter your Amazon affiliate tracking IDs. More affiliate platforms will be available soon.*
 
 Open the ProductWidgets settings page (ProductWidgets > Settings) and enter your Amazon affiliate tracking IDs. The Amazon stores in each of the supported countries (UK, US, Canada, Germany, Spain, France, and Italy) each have a separate affiliate program, so you need to sign up to each program individually. The links to the programs are included on the settings page and signing up normally takes only a few minutes.
 
