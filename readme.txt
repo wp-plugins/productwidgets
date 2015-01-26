@@ -94,6 +94,10 @@ Check out the [ProductWidgets website](https://www.productwidgets.com/) for more
 
 == Changelog ==
 
+= 2.0.3 =
+
+* Use API ping endpoint to check connection
+
 = 2.0.2 =
 
 * Add Amazon tracking IDs to settings page again
