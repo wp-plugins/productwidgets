@@ -1,4 +1,4 @@
-<p class='error'>
+<p class='exception'>
   <strong>
     
           <?php if (!empty($error_message)) { ?>
