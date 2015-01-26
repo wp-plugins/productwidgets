@@ -220,9 +220,9 @@ class Api_Request {
     }
   }
 
-  public function build_url($endpoint = null, $parameters = null) {
+  public function build_url($endpoint = null, $parameters = null, $include_version = true) {
     $url = trailingslashit($this->get_config('url'));
-    if (!is_null($this->get_config('version')))
+    if ($include_version && !is_null($this->get_config('version')))
       $url .= trailingslashit('v'.$this->get_config('version'));
     $url .= $endpoint;
 

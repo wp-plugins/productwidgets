@@ -22,12 +22,17 @@ class Api extends Api_Request {
   }
 
   public function test_connection() {
-    $url = $this->build_url();
+    $url = $this->build_url("ping", null, false);
     try {
-      $this->head($url)->get_response();
-    } catch (HttpRequestFailedException $e) {
-      return $e->getMessage();
-    } catch (Exception $e) {}
+      $this->get($url)->get_response();
+    } catch (Exception $e) {
+      $message = get_class($e);
+      $error_message = $e->getMessage();
+      if (!empty($error_message)) {
+        $message .= ": ".$error_message;
+      }
+      return $message;
+    }
     return "";
   }
 

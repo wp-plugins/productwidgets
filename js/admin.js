@@ -1,6 +1,6 @@
 (function() {
   (function($) {
-    var disableFormButtonsAfterSubmit, enableTextareaAutoselect, formButtonsOriginalAttrName, initPreviewButtons, loadAmazonTrackingIDs, loadLazyLoad, loadWidgetLayouts, loadWidgets, reenableFormButtons, round, watchKeywordInputs, watchWidgetForm;
+    var disableFormButtonsAfterSubmit, enableTextareaAutoselect, formButtonsOriginalAttrName, loadAmazonTrackingIDs, loadLazyLoad, loadWidgetLayouts, loadWidgets, reenableFormButtons, round, watchKeywordInputs, watchWidgetForm;
     $(function() {
       enableTextareaAutoselect();
       disableFormButtonsAfterSubmit();
@@ -26,6 +26,14 @@
         $submit = $('input[type="submit"]', this);
         return $submit.attr(formButtonsOriginalAttrName, $submit.val()).val('Please wait...').attr('disabled', 'disabled');
       });
+    };
+    loadLazyLoad = function(selector) {
+      return $('img.lazy', selector).show().lazyload({
+        effect: 'fadeIn'
+      });
+    };
+    round = function(number, digits) {
+      return parseFloat(number.toFixed(digits));
     };
     loadAmazonTrackingIDs = function() {
       var countries, signup_links;
@@ -78,36 +86,25 @@
         return $(el).val(originalValue).removeAttr('disabled').removeAttr(formButtonsOriginalAttrName);
       });
     };
-    loadLazyLoad = function(selector) {
-      return $('img.lazy', selector).show().lazyload({
-        effect: 'fadeIn'
-      });
-    };
     loadWidgets = function() {
       var $content;
       $content = $("#content");
       if ($content.length) {
         return $content.load("" + ajaxurl + "?action=get_widgets", function() {
           loadLazyLoad();
-          return initPreviewButtons();
+          return $('a.widget-preview-button').click(function(e) {
+            var $button, $wrapper, script;
+            $button = $(e.currentTarget);
+            $wrapper = $button.siblings('.widget-preview-container').find('.widget-preview-wrapper');
+            if (!$wrapper.find('.pw-widget').length) {
+              script = document.createElement('script');
+              script.type = 'text/javascript';
+              script.src = $button.data('js-code');
+              return $wrapper.append(script);
+            }
+          });
         });
       }
-    };
-    initPreviewButtons = function() {
-      return $('a.widget-preview-button').click(function(e) {
-        var $button, $wrapper, script;
-        $button = $(e.currentTarget);
-        $wrapper = $button.siblings('.widget-preview-container').find('.widget-preview-wrapper');
-        if (!$wrapper.find('.pw-widget').length) {
-          script = document.createElement('script');
-          script.type = 'text/javascript';
-          script.src = $button.data('js-code');
-          return $wrapper.append(script);
-        }
-      });
-    };
-    round = function(number, digits) {
-      return parseFloat(number.toFixed(digits));
     };
     loadWidgetLayouts = function() {
       return $.get("" + ajaxurl + "?action=get_widget_layouts", function(response) {
