@@ -47,7 +47,7 @@
   <p>
     Check your
     <a href='<?php echo admin_url('admin.php?page='.$this->plugin_slug.'/widgets.php') ?>'>
-      list of widget
+      list of widgets
     </a>
     or
     <a href='<?php echo admin_url('admin.php?page='.$this->plugin_slug.'/add-widget.php') ?>'>
