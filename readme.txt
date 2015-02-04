@@ -1,7 +1,7 @@
 === ProductWidgets ===
 
 Contributors: krautcomputing
-Tags: affiliate-widget, affiliate-widgets, affiliate, affiliate-plugin, affiliate-plugins, affiliate-marketing, amazon-affiliate, amazon-affiliates, amazon-associate, amazon-associates
+Tags: affiliate-widget, affiliate-widgets, affiliate, affiliate-plugin, affiliate-plugins, affiliate-marketing
 Requires at least: 3.0
 Tested up to: 4.1
 Stable tag: trunk
@@ -12,37 +12,33 @@ The Smart Alternative to Banner Ads - Monetise your website by promoting relevan
 
 == Description ==
 
-**The ProductWidgets plugin automates your affiliate marketing process by analyzing your content and displaying matching affiliate products to your visitors. The whole process is fully automated and happens behind the scenes, so you can focus on creating great content and let ProductWidgets take care of the monetization for you!**
+**The ProductWidgets plugin lets you add beautiful widgets to your website that display products which are relevant to your content. Our widgets are a better-looking, better-performing, less-obtrusive and more flexible alternative to traditional ad banners.**
 
-Getting started is simple: install the plugin, place a widget shortcode in a posts or the sidebar, and products will be displayed immediately. Please note that it might take up to a three hours until the products are optimized for your content.
+You can either set specific keywords for your widgets, and they will display products related to those keywords, or let the ProductWidgets analyze the pages you add widgets to, and find the best products for those pages automatically! The whole process is fully automated and happens behind the scenes, so you can focus on creating great content and let ProductWidgets take care of the monetization for you!
 
-#### Fully automated
+#### Millions of Products
 
-ProductWidgets is a "set and forget" solution and doesn't require any ongoing work after the initial setup. The magic happens behind the scenes where our algorithms are hard at work to make sure the widgets are always up to date and show the best products for your content.
+ProductWidgets is backed by a database containing millions of products from niches such as fashion, technology, music, movies, gaming, sports, and health, and new products are added every day!
+
+#### Fully Automated
+
+Products are selected automatically based on keywords you define or the content of your website. Also, each widget's products are rotated regularly so returning visitors see fresh products every time.
 
 #### Self-optimizing
 
-Each widget selects its products automatically based on the content of the page it is implemented on. It then monitors the products it shows to make sure that the those that perform best are shown more often and those that don't receive a lot of clicks are sorted out quickly. This makes attractive products "bubble up" naturally and maximizes your commissions.
-
-#### Always up-to-date
-
-New products are added every day and old products are removed or go out of stock. ProductWidgets constantly checks whether all products are still available and automatically adds new ones to your widgets to see if they perform well.
+Each product impression, click and sale is tracked and that data is used to make sure your widgets always display the best-performing products. Products that don't perform well are replaced automatically.
 
 #### Geo-targeted
 
-Your visitors come from all over the world, and showing products from the US to a visitor from Italy would not be very smart. Products for your content are available in many different countries, and ProductsWidgets makes sure that your visitors always see products from their local shops.
+Displaying products to visitors that cannot possibly buy them from their country is a wasted opportunity! Our widgets know where each visitor is located and always display products from local advertisers.
 
-#### Simple integration
+#### Responsive
 
-Adding a widget to your site couldn't be easier: just install the plugin, pick from a standard widget layout (Leaderboard, Skyscraper etc.) and copy the shortcode to a post of the layout of your blog. Your widget will appear immediately and be optimized during the next few hours.
+Your site is reponsive and looks good on phones and tablets? So should your widgets! It's easy to configure them to shrink or disappear on smaller screen sizes, while taking advantage of all available space on desktops.
 
-#### Unobtrusive
+#### Simple Implementation
 
-We understand you don't want ugly Flash widgets on your blog that are heavily branded and destroy your site layout! Our widgets are plain and simple and blend in to your site layout easily. We put the product images front and center since they receive the most clicks.
-
-#### Fast
-
-Our widgets are fast! On average, they load in less than 100 milliseconds and use asynchronous loading techniques to not slow down your site.
+Adding a widget to your website is easy and only takes a minute - simply use our Wordpress plugin or insert just one line of Javascript by hand. More plugins to other popular publishing platforms are coming soon!
 
 #### More questions?
 
@@ -50,39 +46,44 @@ Check out the [ProductWidgets website](https://www.productwidgets.com/) for more
 
 == Installation ==
 
-= Install the plugin directly from Wordpress or manually =
+= Install the plugin directly from WordPress or manually =
 
-**Installation from Wordpress:** Search for `ProductWidgets` on the plugins page of your Wordpress admin.
+**Installation from WordPress:** Search for `ProductWidgets` on the plugins page of your WordPress backend.
 
 **Manual installation:** Extract the zip file and copy the extracted folder into the `wp-content/plugins/` directory of your WordPress installation.
 
 = Activate plugin =
 
-Activate the plugin from the plugins page of your Wordpress admin.
+Activate the plugin from the plugins page of your WordPress backend.
 
-= Enter your affiliate IDs =
+= Sign up =
 
-Note: this step can be skipped if you just want to test out the widgets on your page. You can always enter your affiliate IDs later.
-
-To make sure that you receive the commissions for the products you promote, you need to enter your affiliate IDs in the plugin settings.
-
-Open the ProductWidgets settings page (ProductWidgets > Settings) and enter your Amazon affiliate tracking IDs. The Amazon stores in each of the supported countries (UK, US, Canada, Germany, Spain, France, and Italy) each have a separate affiliate program, so you need to sign up to each program individually. The links to the programs are included on the settings page and signing up normally takes only a few minutes.
+Click on the new "ProductWidgets" menu item to get to the signup form. Fill in the form and make sure to enter a correct email address. We will review your signup and activate your account shortly thereafter. You will receive an activation mail to the email address you entered with further information on how to get started.
 
 = Create your first widget =
 
-Now you are all set to implement your first widget!
+Once you receive the activation mail, you are all set to implement your first widget!
 
-Go to the list of widget layouts (ProductWidgets > Widget Layouts) and pick the one you want to implement. (hint: to see a preview of how the widget will look like, click on "Preview"). Copy the shortcode of the widget layout and paste it where you want the widget to appear.
+Log back in to your WordPress backend and click on the ProductWidgets menu item again. This will bring you to your list of widgets, which is of course empty until now. Click on the "Add New" link next to the headline or the "Add Widget" menu item to get to the screen that lets you create a new widget.
 
-Note that you can add the shortcode to a blog post, a page, the layout or even a sidebar widget (for the latter, add a Wordpress "text" widget to the sidebar and enter the shortcode there).
+On this screen you can select a widget layout and decide whether you want to set the keywords for your new widget yourself or let ProductWidgets take care of selecting products for your widget. [Read more about this here!](https://www.productwidgets.com/how-it-works/#automation)
 
-**If you have any more questions or something doesn't work as expected, don't hesitate to [get in touch via email](mailto:hello@productwidgets.com) and we will help you out!**
+Once you click "Preview and get code", two more things will appear: the "widget shortcode" and a preview of your widget. You can test different layouts or keywords until you are satisfied with the widget, and then click on the widget shortcode to copy it.
+
+Note that if you don't set your own keywords, the products in the preview widget will simply be popular products from our database. Once you add this widget to your website, the ProductWidgets algorithm will analyze your page and improve the product selection to fit your content.
+
+You can now add the widget shortcode to a blog post, a page, the layout or even a sidebar widget (add a WordPress "text" widget to the sidebar and enter the shortcode there).
 
 == Frequently Asked Questions ==
 
-= What happens when the ProductWidgets website/service is down? Will my widgets still appear? =
+= Will the widgets slow down my website? =
 
-Yes! The widgets are cached on a global content delivery network (CDN), which makes then appear very fast around the world, even if the ProductWidgets service is temporarily not available.
+We have taken care to build the widgets completely asynchronous, which means that most of the data (product data, images etc.) will be loaded only after your website has finished loading. Moreover, the widgets are stored on a global content delivery network (CDN), which makes them very fast, no matter from which country they are loaded.
+This is to say that we have taken great care to make the widgets as fast and performant as possible, and there shouldn't be any noticeable slowdown of your website.
+
+= What happens when the ProductWidgets website/service is down/unavailable? Will my widgets still appear? =
+
+Yes! As mentioned in the previous question, the widgets are stored on a global content delivery network (CDN), which caches the widgets and delivers them very fast anywhere in the world, even if the ProductWidgets service is temporarily not available.
 
 = I have more questions! =
 
