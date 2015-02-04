@@ -22,7 +22,7 @@ class Api extends Api_Request {
   }
 
   public function test_connection() {
-    $url = $this->build_url("ping", null, false);
+    $url = $this->build_url("", null, false);
     try {
       $this->get($url)->get_response();
     } catch (Exception $e) {
