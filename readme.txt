@@ -12,7 +12,7 @@ The Smart Alternative to Banner Ads - Monetise your website by promoting relevan
 
 == Description ==
 
-**The ProductWidgets plugin lets you add beautiful widgets to your website that display products which are relevant to your content. Our widgets are a better-looking, better-performing, less-obtrusive and more flexible alternative to traditional ad banners.**
+**Whether you run a personal blog or topic website, ProductWidgets helps you to monetise your content without annoying your users. Our beautiful widgets automatically display products which are relevant to your content - they are a better-looking, better-performing, less-obtrusive and more flexible alternative to traditional ad banners.**
 
 You can either set specific keywords for your widgets, and they will display products related to those keywords, or let the ProductWidgets analyze the pages you add widgets to, and find the best products for those pages automatically! The whole process is fully automated and happens behind the scenes, so you can focus on creating great content and let ProductWidgets take care of the monetization for you!
 
@@ -46,21 +46,23 @@ Check out the [ProductWidgets website](https://www.productwidgets.com/) for more
 
 == Installation ==
 
-= Install the plugin directly from WordPress or manually =
+#### Attention please! We are currently only looking for publishers [from a selected list of (mostly European) countries](https://www.productwidgets.com/get-started/). More specifically, we cannot work together with publishers from the US yet. Unfortunately we had to limit the list of countries to be able to find great advertisers for all our publishers. We will definitely support publishers from the US and more countries soon!
+
+#### Install the plugin directly from WordPress or manually
 
 **Installation from WordPress:** Search for `ProductWidgets` on the plugins page of your WordPress backend.
 
 **Manual installation:** Extract the zip file and copy the extracted folder into the `wp-content/plugins/` directory of your WordPress installation.
 
-= Activate plugin =
+#### Activate plugin
 
 Activate the plugin from the plugins page of your WordPress backend.
 
-= Sign up =
+#### Sign up
 
 Click on the new "ProductWidgets" menu item to get to the signup form. Fill in the form and make sure to enter a correct email address. We will review your signup and activate your account shortly thereafter. You will receive an activation mail to the email address you entered with further information on how to get started.
 
-= Create your first widget =
+#### Create your first widget
 
 Once you receive the activation mail, you are all set to implement your first widget!
 
