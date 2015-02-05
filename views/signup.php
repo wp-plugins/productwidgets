@@ -57,7 +57,7 @@
   
         <?php } else if (!empty($api_key)) { ?>
           <h2>
-    <?php echo esc_html(get_admin_page_title()) ?>
+    Thanks for signing up!
   </h2>
   <p>
     We have received your signup and will activate your account shortly.
