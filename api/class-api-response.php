@@ -82,7 +82,7 @@ class Api_Response implements ArrayAccess, Iterator {
       $expires = strtotime($this->get_header('expires'));
       return (time() > $expires);
     }
-    return false; // By default never expires
+    return true; // By default assume expired
   }
 
   /**
