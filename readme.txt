@@ -93,6 +93,15 @@ Check out the [ProductWidgets website](https://www.productwidgets.com/) for more
 
 == Changelog ==
 
+= 2.0.4 =
+
+* Fix API ping endpoint
+* Update wording
+* Fix newsletter link
+* Update banners
+* Add icons
+* Fix checking if API resource is expired
+
 = 2.0.3 =
 
 * Use API ping endpoint to check connection
