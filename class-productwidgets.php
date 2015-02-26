@@ -80,6 +80,8 @@ class Product_Widgets {
    */
   public $api = null;
 
+  public $countries = ['Germany', 'France', 'Italy', 'Spain', 'Netherlands', 'Belgium', 'Austria', 'Switzerland', 'Sweden', 'Norway', 'Denmark', 'Finland', 'Portugal', 'Poland', 'Czech Republic', 'Brazil'];
+
   /**
    * Initialize the plugin by setting localization, filters, and administration functions.
    *
@@ -146,15 +148,6 @@ class Product_Widgets {
       wp_enqueue_script($this->plugin_slug.'-jquery-lazyload-script', $this->plugin_url.'js/jquery.lazyload.js', array('jquery'), self::VERSION, true);
       wp_enqueue_script($this->plugin_slug.'-admin-script', $this->plugin_url.'js/admin.js', array('jquery'), self::VERSION, true);
     }
-  }
-
-  /**
-   * Render API Key field
-   *
-   * @since     1.0.0
-   */
-  public function api_key_field() {
-    echo '<input id="api_key" name="api_key" size="40" type="text" value="'.get_option('api_key').'">';
   }
 
   /**

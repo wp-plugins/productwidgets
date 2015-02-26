@@ -155,10 +155,23 @@ body.toplevel_page_productwidgets-signup .ajax-loader img {
 body.toplevel_page_productwidgets-signup .exception {
   color: #f00;
 }
-/* line 6, ../../sass/pages/_signup.scss */
+/* line 4, ../../sass/pages/_signup.scss */
+body.toplevel_page_productwidgets-signup #intro {
+  max-width: 650px;
+}
+/* line 10, ../../sass/pages/_signup.scss */
 body.toplevel_page_productwidgets-signup form input[type="text"],
+body.toplevel_page_productwidgets-signup form textarea,
+body.toplevel_page_productwidgets-signup form select {
+  width: 300px;
+}
+/* line 16, ../../sass/pages/_signup.scss */
 body.toplevel_page_productwidgets-signup form textarea {
-  width: 350px;
+  height: 70px;
+}
+/* line 20, ../../sass/pages/_signup.scss */
+body.toplevel_page_productwidgets-signup form p {
+  max-width: 400px;
 }
 
 /* line 3, ../../sass/_base.scss */

@@ -75,38 +75,38 @@
           <h2>
     Welcome to ProductWidgets!
   </h2>
-  <p>
-    <strong>
-      ProductWidgets lets you replace your old and boring banner ads with smart product widgets
+  <div id='intro'>
+    <p>
+      <strong>
+        ProductWidgets is a tool for publishers that lets them add intelligent widgets to their websites. The widgets show products which are related to the page content, and if a visitor clicks on a product and buys it, the publisher receives a commission. Simple as that.
+      </strong>
+    </p>
+    <p>
+      To start using ProductWidgets, you need to create
+      <strong>
+        a free account.
+      </strong>
       <br>
-      that automatically find the best products to display alongside your content!
-    </strong>
-  </p>
-  <p>
-    To start using ProductWidgets, you need to create
-    <strong>
-      a free account.
-    </strong>
-    <br>
-    This is necessary to avoid publishers with objectionable content which advertisers don't want to promote their products next to.
-  </p>
-  <p>
-    <strong>
-      Creating an account is quick, free, and does not create any obligation for you to use ProductWidgets!
-      <br>
-      No information other than what is in the form below will be shared with us.
-    </strong>
-  </p>
-  <p>
-    If you have any more questions, check out
-    <a href='https://www.productwidgets.com/' target='_blank'>
-      the ProductWidgets website
-    </a>
-    or
-    <a href='mailto:hello@productwidgets.com'>
-      get in touch with us!
-    </a>
-  </p>
+      This is necessary to avoid publishers with objectionable content which advertisers don't want to promote their products next to.
+    </p>
+    <p>
+      <strong>
+        Creating an account is quick, free, and does not create any obligation for you to use ProductWidgets!
+        <br>
+        No information other than what is in the form below will be shared with us.
+      </strong>
+    </p>
+    <p>
+      If you have any more questions, check out
+      <a href='https://www.productwidgets.com/' target='_blank'>
+        the ProductWidgets website
+      </a>
+      or
+      <a href='mailto:hello@productwidgets.com'>
+        get in touch with us!
+      </a>
+    </p>
+  </div>
   <form action='' method='post'>
     <table class='form-table'>
       <tr valign='top'>
@@ -148,6 +148,41 @@
             The domain of the website you want to use ProductWidgets on.
             <br>
             Please make sure this is a publicly accessible domain we can look at.
+          </p>
+        </td>
+      </tr>
+      <tr valign='top'>
+        <th scope='row'>
+          Primary country
+        </th>
+        <td>
+          <select name='signup[country]'>
+            
+                  <?php foreach ($this->countries as $country) { ?>
+                    <option value='<?php echo $country ?>'
+                  <?php if (isset($_POST["signup"]["country"]) && $_POST["signup"]["country"] == $country) { ?>
+                    <?php echo " selected" ?>
+                  <?php } ?>
+                ><?php echo $country ?></option>
+            
+                  <?php } ?>
+          </select>
+          <p class='description'>
+            The country your website is primarily focussed on. Preferable your website should have the country-specific top-level domain and the content should be in the local language.
+            <br>
+            Unfortunately we cannot offer ProductWidgets for all countries yet. Read more about it on
+            <a href='https://www.productwidgets.com/get-started/' target='_blank'>the ProductWidgets website</a>.
+          </p>
+        </td>
+      </tr>
+      <tr valign='top'>
+        <th scope='row'>
+          Comments
+        </th>
+        <td>
+          <textarea name='signup[comments]'></textarea>
+          <p class='description'>
+            Anything else you want to tell us about your website.
           </p>
         </td>
       </tr>
