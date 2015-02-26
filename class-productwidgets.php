@@ -3,8 +3,8 @@
  * @package   ProductWidgets
  * @author    Kraut Computing <info@krautcomputing.com>
  * @license   GPL-2.0
- * @link      http://www.productwidgets.com/publishers/wordpress/
- * @copyright 2014 kraut computing UG (haftungsbeschränkt)
+ * @link      https://www.productwidgets.com/
+ * @copyright 2015 kraut computing UG (haftungsbeschränkt)
  */
 
 /**
@@ -69,7 +69,7 @@ class Product_Widgets {
    *
    * @var      string
    */
-  protected $plugin_url = null;
+  public $plugin_url = null;
 
   /**
    * API
@@ -80,6 +80,8 @@ class Product_Widgets {
    */
   public $api = null;
 
+  public $countries = ['Germany', 'France', 'Italy', 'Spain', 'Netherlands', 'Belgium', 'Austria', 'Switzerland', 'Sweden', 'Norway', 'Denmark', 'Finland', 'Portugal', 'Poland', 'Czech Republic', 'Brazil'];
+
   /**
    * Initialize the plugin by setting localization, filters, and administration functions.
    *
@@ -89,34 +91,27 @@ class Product_Widgets {
     $this->display_url = '//d.productwidgets'.(PW_DEV ? '.dev' : '.com');
     $this->plugin_url = trailingslashit(trailingslashit(plugins_url()).$this->plugin_slug);
 
-    $api_key = get_option('api_key');
-    if (empty($api_key)) {
-      $api_key = substr(md5(microtime().rand()), 0, 20);
-      update_option('api_key', $api_key);
-    }
-
-    // Register admin settings
-    add_action('admin_init', array($this, 'register_admin_settings'));
-
     // Add admin menu
     add_action('admin_menu', array($this, 'add_admin_menu'));
 
     // Load admin styles and scripts
     add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_styles_and_scripts'));
 
-    // Add an action link pointing to the options page
+    // Add an action link to entry in plugin list
     $plugin_basename = plugin_basename(plugin_dir_path(__FILE__).$this->plugin_slug.'.php');
     add_filter('plugin_action_links_'.$plugin_basename, array($this, 'add_action_links'));
 
-    // Replace widget tags in the page content
-    add_shortcode('productwidget', array($this, 'replace_widget_tag'));
+    // Replace widget shortcodes in the page content
+    add_shortcode('productwidget', array($this, 'replace_widget_shortcode'));
 
-    // Enable shortcode in widgets
+    // Enable shortcodes in widgets
     add_filter('widget_text', 'do_shortcode');
 
     // Respond to Ajax calls from admin pages
-    add_action('wp_ajax_get_tracking_ids', array($this, 'get_tracking_ids_callback'));
-    add_action('wp_ajax_get_widget_layouts', array($this, 'get_widget_layouts_callback'));
+    add_action('wp_ajax_get_amazon_tracking_ids', array($this, 'get_amazon_tracking_ids_callback'));
+    add_action('wp_ajax_get_widgets',             array($this, 'get_widgets_callback'));
+    add_action('wp_ajax_get_widget_layouts',      array($this, 'get_widget_layouts_callback'));
+    add_action('wp_ajax_parse_widget_shortcode',  array($this, 'parse_widget_shortcode_callback'));
 
     // Initialize the API
     $this->api = new Api(array(
@@ -156,75 +151,84 @@ class Product_Widgets {
   }
 
   /**
-   * Register admin settings
-   *
-   * @since     1.0.0
-   */
-  public function register_admin_settings() {
-    add_settings_section(
-      'general_settings_section',                 // ID used to identify this section and with which to register options
-      '',                                         // Title to be displayed on the administration page
-      '',                                         // Callback used to render the description of the section
-      $this->plugin_slug                          // Page on which to add this section of options
-    );
-
-    add_settings_field(
-      'api_key_field',                            // ID used to identify the field throughout the theme
-      'API Key',                                  // The label to the left of the option interface element
-      array($this, 'api_key_field'),              // The name of the function responsible for rendering the option interface
-      $this->plugin_slug,                         // The page on which this option will be displayed
-      'general_settings_section'                  // The name of the section to which this field belongs
-    );
-
-    register_setting(
-      $this->plugin_slug,
-      'api_key'
-    );
-  }
-
-  /**
-   * Render API Key field
-   *
-   * @since     1.0.0
-   */
-  public function api_key_field() {
-    echo '<input id="api_key" name="api_key" size="40" type="text" value="'.get_option('api_key').'">';
-  }
-
-  /**
    * Register admin menu
    *
    * @since     1.0.0
    */
   public function add_admin_menu() {
-    // Add top-level menu
-    add_menu_page(
-      $this->plugin_name,
-      $this->plugin_name,
-      'manage_options',
-      $this->plugin_slug.'/widget-layouts.php',
-      array($this, 'display_widget_layouts_page')
-    );
+    $api_key = get_option('api_key');
+    $account_activated_at = get_option('account_activated_at');
+    if (empty($api_key) || empty($account_activated_at)) {
+      // Add top-level menu
+      add_menu_page(
+        $this->plugin_name,
+        $this->plugin_name,
+        'manage_options',
+        $this->plugin_slug.'/signup.php',
+        array($this, 'display_signup_page')
+      );
+    } else {
+      // Add top-level menu
+      add_menu_page(
+        $this->plugin_name,
+        $this->plugin_name,
+        'manage_options',
+        $this->plugin_slug.'/widgets.php',
+        array($this, 'display_widgets_page')
+      );
 
-    // Add sub-level menu "Widget Layouts"
-    add_submenu_page(
-      $this->plugin_slug.'/widget-layouts.php',
-      'Widget Layouts',
-      'Widget Layouts',
-      'manage_options',
-      $this->plugin_slug.'/widget-layouts.php',
-      array($this, 'display_widget_layouts_page')
-    );
+      // Add sub-level menu "Widgets"
+      add_submenu_page(
+        $this->plugin_slug.'/widgets.php',
+        'Widgets',
+        'Widgets',
+        'manage_options',
+        $this->plugin_slug.'/widgets.php',
+        array($this, 'display_widgets_page')
+      );
 
-    // Add sub-level menu "Settings"
-    add_submenu_page(
-      $this->plugin_slug.'/widget-layouts.php',
-      'Settings',
-      'Settings',
-      'manage_options',
-      $this->plugin_slug.'/settings.php',
-      array($this, 'display_settings_page')
-    );
+      // Add sub-level menu "Add Widget"
+      add_submenu_page(
+        $this->plugin_slug.'/widgets.php',
+        'Add Widget',
+        'Add Widget',
+        'manage_options',
+        $this->plugin_slug.'/add-widget.php',
+        array($this, 'display_add_widget_page')
+      );
+
+      // Add sub-level menu "Settings"
+      add_submenu_page(
+        $this->plugin_slug.'/widgets.php',
+        'Settings',
+        'Settings',
+        'manage_options',
+        $this->plugin_slug.'/settings.php',
+        array($this, 'display_settings_page')
+      );
+
+      // Add sub-level menu "Signup"
+      // Make it a child of another submenu page,
+      // so it's not displayed in the menu.
+      add_submenu_page(
+        $this->plugin_slug.'/add-widget.php',
+        'Signup',
+        'Signup',
+        'manage_options',
+        $this->plugin_slug.'/signup.php',
+        array($this, 'display_signup_page')
+      );
+    }
+  }
+
+  /**
+   * Render the signup page
+   *
+   * @since    1.0.0
+   */
+  public function display_signup_page() {
+    if ($this->perform_checks())
+      include_once('views/signup.php');
   }
 
   /**
@@ -232,11 +236,19 @@ class Product_Widgets {
    *
    * @since    1.0.0
    */
-  public function display_widget_layouts_page() {
-    if (!current_user_can('manage_options'))
-      wp_die(__('You do not have sufficient permissions to access this page.'));
+  public function display_widgets_page() {
+    if ($this->perform_checks())
+      include_once('views/widgets.php');
+  }
 
-    include_once('views/widget-layouts.php');
+  /**
+   * Render the add widget page
+   *
+   * @since    1.0.0
+   */
+  public function display_add_widget_page() {
+    if ($this->perform_checks())
+      include_once('views/add-widget.php');
   }
 
   /**
@@ -245,22 +257,60 @@ class Product_Widgets {
    * @since    1.0.0
    */
   public function display_settings_page() {
-    if (!current_user_can('manage_options'))
-      wp_die(__('You do not have sufficient permissions to access this page.'));
-
-    include_once('views/settings.php');
+    if ($this->perform_checks())
+      include_once('views/settings.php');
   }
 
   /**
-   * Add settings action link to the plugins page.
+   * Perform checks
+   *
+   * @since    1.0.0
+   */
+  function perform_checks() {
+    # Check if the user has sufficient permissions
+    if (!current_user_can('manage_options'))
+      wp_die(__('You do not have sufficient permissions to access this page.'));
+
+    # Check if communication with the API works
+    $api_error = $this->api->test_connection();
+    if (!empty($api_error)) {
+      include('views/api-error.php');
+      return false;
+    }
+
+    # Check if account was deactivated
+    $api_key = get_option('api_key');
+    $account_activated_at = get_option('account_activated_at');
+    if (!empty($api_key) && !empty($account_activated_at)) {
+      $account = $this->api->get_account();
+      if (!empty($account['deactivated_at'])) {
+        include('views/account-deactivated.php');
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Add action link to the plugins page.
    *
    * @since    1.0.0
    */
   public function add_action_links($links) {
+    $api_key = get_option('api_key');
+    $account_activated_at = get_option('account_activated_at');
+    if (empty($api_key) || empty($account_activated_at)) {
+      $link = array(
+        'signup' => '<a href="'.admin_url('admin.php?page='.$this->plugin_slug.'/signup.php').'">Signup</a>'
+      );
+    } else {
+      $link = array(
+        'widgets' => '<a href="'.admin_url('admin.php?page='.$this->plugin_slug.'/widgets.php').'">Widgets</a>'
+      );
+    }
     return array_merge(
-      array(
-        'settings' => '<a href="'.admin_url('admin.php?page='.$this->plugin_slug.'/settings.php').'">Settings</a>'
-      ),
+      $link,
       $links
     );
   }
@@ -270,12 +320,12 @@ class Product_Widgets {
    *
    * @since    1.0.0
    */
-  function get_tracking_ids_callback() {
+  function get_amazon_tracking_ids_callback() {
     try {
-      $tracking_ids = $this->api->get_tracking_ids();
-      wp_send_json($tracking_ids);
+      $amazon_tracking_ids = $this->api->get_amazon_tracking_ids();
+      wp_send_json($amazon_tracking_ids);
     } catch (Exception $e) {
-      $error_message = "Could not load tracking IDs.";
+      $error_message = "Could not load Amazon tracking IDs.";
       include("views/partials/_exception.php");
       die();
     }
@@ -286,41 +336,54 @@ class Product_Widgets {
    *
    * @since    1.0.0
    */
-  function get_widget_layouts_callback() {
-    include("views/partials/_widget-layouts.php");
+  function get_widgets_callback() {
+    include("views/partials/widgets/_widgets.php");
     die();
   }
 
   /**
-   * Convert a widget tag to a Javascript tag.
+   * Fetches the widget layouts from the API and send them as JSON.
    *
    * @since    1.0.0
    */
-  public function replace_widget_tag($attributes) {
-    extract(shortcode_atts(array('layout' => ''), $attributes));
-    return $this->generate_javascript_tag($layout);
+  function get_widget_layouts_callback() {
+    try {
+      $widget_layouts = $this->api->get_widget_layouts();
+      wp_send_json($widget_layouts);
+    } catch (Exception $e) {
+      $error_message = "Could not load widget layouts.";
+      include("views/partials/_exception.php");
+      die();
+    }
+  }
+
+  function parse_widget_shortcode_callback() {
+    $shortcode = stripslashes($_GET['shortcode']);
+    echo do_shortcode($shortcode);
+    die();
   }
 
   /**
-   * Generate a Javascript tag based on keywords and layout.
+   * Convert a widget shortcode to a Javascript tag.
    *
    * @since    1.0.0
    */
-  public function generate_javascript_tag($layout) {
-    $api_key = get_option('api_key');
-    return '<script src="'.$this->display_url.'/'.$api_key.'/'.$layout.'/widget.js" type="text/javascript"></script>'."\n";
+  public function replace_widget_shortcode($attributes) {
+    extract(shortcode_atts(array(
+      'layout'   => '',
+      'keywords' => ''
+    ), $attributes));
+    return $this->generate_javascript_tag($layout, $keywords);
   }
 
-  public function locale_to_country($locale) {
-    switch ($locale) {
-      case "de": return "Germany";
-      case "gb": return "United Kingdom";
-      case "us": return "United States";
-      case "ca": return "Canada";
-      case "es": return "Spain";
-      case "fr": return "France";
-      case "it": return "Italy";
-      default: throw new Exception("Locale ".$locale." is invalid.");
-    }
+  /**
+   * Generate a Javascript tag from a layout and keywords.
+   *
+   * @since    1.0.0
+   */
+  public function generate_javascript_tag($layout, $keywords) {
+    $api_key = get_option('api_key');
+    $url = $this->display_url.'/'.$api_key.'/'.$layout.'/widget.js';
+    return '<script src="'.$url.'" data-keywords="'.$keywords.'" type="text/javascript"></script>'."\n";
   }
 }
