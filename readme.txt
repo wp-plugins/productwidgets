@@ -93,6 +93,10 @@ Check out the [ProductWidgets website](https://www.productwidgets.com/) for more
 
 == Changelog ==
 
+= 2.0.5 =
+
+* Update signup form
+
 = 2.0.4 =
 
 * Fix API ping endpoint
