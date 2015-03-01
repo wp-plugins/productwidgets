@@ -1,7 +1,7 @@
 === ProductWidgets ===
 
 Contributors: krautcomputing
-Tags: affiliate-widget, affiliate-widgets, affiliate, affiliate-plugin, affiliate-plugins, affiliate-marketing
+Tags: affiliate-widget, affiliate-widgets, affiliate, affiliate-plugin, affiliate-plugins, affiliate-marketing, ads, advertising, affiliate, widget, widgets
 Requires at least: 3.0
 Tested up to: 4.1
 Stable tag: trunk
