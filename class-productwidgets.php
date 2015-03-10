@@ -80,7 +80,7 @@ class Product_Widgets {
    */
   public $api = null;
 
-  public $countries = ['Germany', 'France', 'Italy', 'Spain', 'Netherlands', 'Belgium', 'Austria', 'Switzerland', 'Sweden', 'Norway', 'Denmark', 'Finland', 'Portugal', 'Poland', 'Czech Republic', 'Brazil'];
+  public $countries = array('Germany', 'France', 'Italy', 'Spain', 'Netherlands', 'Belgium', 'Austria', 'Switzerland', 'Sweden', 'Norway', 'Denmark', 'Finland', 'Portugal', 'Poland', 'Czech Republic', 'Brazil');
 
   /**
    * Initialize the plugin by setting localization, filters, and administration functions.
