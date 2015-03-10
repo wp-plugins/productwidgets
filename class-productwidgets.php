@@ -88,7 +88,7 @@ class Product_Widgets {
    * @since     1.0.0
    */
   private function __construct() {
-    $this->display_url = '//d.productwidgets'.(PW_DEV ? '.dev' : '.com');
+    $this->display_url = '//w.productwidgets'.(PW_DEV ? '.dev' : '.com');
     $this->plugin_url = trailingslashit(trailingslashit(plugins_url()).$this->plugin_slug);
 
     // Add admin menu
@@ -111,6 +111,9 @@ class Product_Widgets {
     add_action('wp_ajax_get_amazon_tracking_ids', array($this, 'get_amazon_tracking_ids_callback'));
     add_action('wp_ajax_get_widgets',             array($this, 'get_widgets_callback'));
     add_action('wp_ajax_get_widget_layouts',      array($this, 'get_widget_layouts_callback'));
+    add_action('wp_ajax_get_product_sources',     array($this, 'get_product_sources_callback'));
+    add_action('wp_ajax_get_categories',          array($this, 'get_categories_callback'));
+    add_action('wp_ajax_create_widget',           array($this, 'create_widget_callback'));
     add_action('wp_ajax_parse_widget_shortcode',  array($this, 'parse_widget_shortcode_callback'));
 
     // Initialize the API
@@ -351,9 +354,42 @@ class Product_Widgets {
       $widget_layouts = $this->api->get_widget_layouts();
       wp_send_json($widget_layouts);
     } catch (Exception $e) {
-      $error_message = "Could not load widget layouts.";
-      include("views/partials/_exception.php");
+      $error_message = 'Could not load widget layouts.';
+      include('views/partials/_exception.php');
       die();
+    }
+  }
+
+  function get_product_sources_callback() {
+    try {
+      $product_sources = $this->api->get_product_sources();
+      wp_send_json($product_sources);
+    } catch (Exception $e) {
+      $error_message = 'Could not load product sources.';
+      include('views/partials/_exception.php');
+      die();
+    }
+  }
+
+  function get_categories_callback() {
+    $product_source_id = $_GET['product_source_id'];
+    try {
+      $product_source = $this->api->get_product_source($product_source_id);
+      wp_send_json($product_source['categories']);
+    } catch (Exception $e) {
+      $error_message = 'Could not load categories for product source '.$product_source_id.'.';
+      include('views/partials/_exception.php');
+      die();
+    }
+  }
+
+  function create_widget_callback() {
+    $widgetParams = $_POST['widget'];
+    try {
+      $widget = $this->api->create_widget($widgetParams);
+      wp_send_json_success($widget);
+    } catch (Exception $e) {
+      wp_send_json_error($e->getMessage());
     }
   }
 
@@ -370,20 +406,26 @@ class Product_Widgets {
    */
   public function replace_widget_shortcode($attributes) {
     extract(shortcode_atts(array(
+      'id'       => '',
       'layout'   => '',
       'keywords' => ''
     ), $attributes));
-    return $this->generate_javascript_tag($layout, $keywords);
+    return $this->generate_javascript_tag($id, $layout, $keywords);
   }
 
   /**
-   * Generate a Javascript tag from a layout and keywords.
+   * Generate a Javascript tag from a widget ID.
    *
    * @since    1.0.0
    */
-  public function generate_javascript_tag($layout, $keywords) {
+  public function generate_javascript_tag($widgetId, $layout, $keywords) {
     $api_key = get_option('api_key');
-    $url = $this->display_url.'/'.$api_key.'/'.$layout.'/widget.js';
-    return '<script src="'.$url.'" data-keywords="'.$keywords.'" type="text/javascript"></script>'."\n";
+    if (!is_null($widgetId) && $widgetId != '') {
+      $url = $this->display_url.'/'.$api_key.'/'.$widgetId.'/widget.js';
+      return '<script src="'.$url.'" type="text/javascript"></script>'."\n";
+    } else {
+      $url = '//d.productwidgets'.(PW_DEV ? '.dev' : '.com').'/'.$api_key.'/'.$layout.'/widget.js';
+      return '<script src="'.$url.'" data-keywords="'.$keywords.'" type="text/javascript"></script>'."\n";
+    }
   }
 }

@@ -6,6 +6,7 @@
  * @copyright 2015 kraut computing UG (haftungsbeschränkt)
  */
  ?>
+<?php include('partials/_rollbar.php') ?>
 <?php
   if (isset($_POST["signup"])) {
     $nonce = $_POST["_wpnonce"];

@@ -6,6 +6,9 @@
  * @copyright 2015 kraut computing UG (haftungsbeschränkt)
  */
  ?>
+<?php include('partials/_rollbar.php') ?>
+<link href='//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/css/select2.min.css' rel='stylesheet'>
+<script src='//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/js/select2.min.js'></script>
 <div class='wrap'>
   <h2>
     <?php echo esc_html(get_admin_page_title()) ?>
@@ -25,54 +28,82 @@
           Effect
         </th>
         <td>
-          <p>
-            <input checked id='effect_none' name='effect' type='radio' value=''>
-            <label for='effect_none'>
+          <div>
+            <input checked id='effect-none' name='effect' type='radio' value=''>
+            <label for='effect-none'>
               None
             </label>
-          </p>
-          <p>
+          </div>
+          <div>
             <input id='effect_slider' name='effect' type='radio' value='slider'>
             <label for='effect_slider'>
               Slider
             </label>
-          </p>
+          </div>
         </td>
       </tr>
-      <tr id='products' valign='top'>
+      <tr id='product-source' valign='top'>
         <th scope='row'>
-          Products
+          Product source
         </th>
         <td>
-          <p>
-            <input disabled id='products_automated_content' name='products' type='radio' value='automated_content'>
-            <label disabled for='products_automated_content'>
-              Find products related to the page content (coming soon)
+          <select name='product-source'></select>
+        </td>
+      </tr>
+      <tr id='categories' valign='top'>
+        <th scope='row'>
+          Categories
+        </th>
+        <td>
+          <div>
+            <input checked id='categories-none' name='categories' type='radio' value='none'>
+            <label for='categories-none'>
+              Don't filter products by categories.
             </label>
-          </p>
-          <p>
-            <input checked id='products_automated_title' name='products' type='radio' value='automated_title'>
-            <label for='products_automated_title'>
-              Find products related to the page title
+          </div>
+          <div>
+            <input id='categories-manual' name='categories' type='radio' value='manual'>
+            <label for='categories-manual'>
+              Find products from these categories:
             </label>
-          </p>
-          <p>
-            <input id='keywords_manual' name='products' type='radio' value='manual'>
-            <label for='keywords_manual'>
+          </div>
+          <div class='wrapper'>
+            <?php include('partials/_ajax-loader.php') ?>
+            <select name='category-1'></select>
+            <select name='category-2'></select>
+            <select name='category-3'></select>
+          </div>
+        </td>
+      </tr>
+      <tr id='keywords' valign='top'>
+        <th scope='row'>
+          Keywords
+        </th>
+        <td>
+          <div>
+            <input checked id='keywords-none' name='keywords' type='radio' value='none'>
+            <label for='keywords-none'>
+              Don't filter products by keywords.
+            </label>
+          </div>
+          <div>
+            <input id='keywords-manual' name='keywords' type='radio' value='manual'>
+            <label for='keywords-manual'>
               Find products related to these keywords:
             </label>
-          </p>
-          <p id='keywords'>
-            <input id='keyword_1' name='keywords' placeholder='Keyword 1' type='text'>
-            <input id='keyword_2' name='keywords' placeholder='Keyword 2' type='text'>
-            <input id='keyword_3' name='keywords' placeholder='Keyword 3' type='text'>
-          </p>
+          </div>
+          <div>
+            <input id='keyword-1' name='keyword-1' placeholder='Keyword 1' type='text'>
+            <input id='keyword-2' name='keyword-2' placeholder='Keyword 2' type='text'>
+            <input id='keyword-3' name='keyword-3' placeholder='Keyword 3' type='text'>
+          </div>
         </td>
       </tr>
       <tr valign='top'>
         <th scope='row'></th>
         <td>
           <?php echo submit_button("Preview and get code") ?>
+          <div class='exception' id='error'></div>
         </td>
       </tr>
       <tr id='shortcode' valign='top'>
@@ -88,10 +119,9 @@
           Preview
         </th>
         <td>
+          <?php include('partials/_ajax-loader.php') ?>
           <div id='widget'></div>
-          <p id='automated-title-note'>
-            Note: These are only sample products. Once you implement this widget on a page, it will start to show products related to the title of that page.
-          </p>
+          <div id='note'></div>
         </td>
       </tr>
     </table>

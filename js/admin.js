@@ -1,6 +1,7 @@
 (function() {
   (function($) {
-    var disableFormButtonsAfterSubmit, enableTextareaAutoselect, formButtonsOriginalAttrName, loadAmazonTrackingIDs, loadLazyLoad, loadWidgetLayouts, loadWidgets, reenableFormButtons, round, watchKeywordInputs, watchWidgetForm;
+    var disableFormButtonsAfterSubmit, enableTextareaAutoselect, formButtonsOriginalAttrName, loadAmazonTrackingIDs, loadCategories, loadLazyLoad, loadWidgetLayoutsAndProductSources, loadWidgets, reenableFormButtons, round, watchCategoriesAndKeywords, watchWidgetForm;
+    formButtonsOriginalAttrName = 'data-original-value';
     $(function() {
       enableTextareaAutoselect();
       disableFormButtonsAfterSubmit();
@@ -9,8 +10,8 @@
       } else if ($('body.toplevel_page_productwidgets-widgets').length) {
         return loadWidgets();
       } else if ($('body.productwidgets_page_productwidgets-add-widget').length) {
-        loadWidgetLayouts();
-        watchKeywordInputs();
+        loadWidgetLayoutsAndProductSources();
+        watchCategoriesAndKeywords();
         return watchWidgetForm();
       }
     });
@@ -19,7 +20,6 @@
         return this.select();
       });
     };
-    formButtonsOriginalAttrName = 'data-original-value';
     disableFormButtonsAfterSubmit = function() {
       return $(document).on('submit', 'form', function() {
         var $submit;
@@ -106,22 +106,44 @@
         });
       }
     };
-    loadWidgetLayouts = function() {
-      return $.get("" + ajaxurl + "?action=get_widget_layouts", function(response) {
-        var $form, $td, checkedString, first, iconHeight, iconVerticalMargin, iconWidth, id, maxIconHeight, widgetLayout, widgetLayoutNames, _i, _len, _ref;
-        $('.ajax-loader').hide();
+    loadWidgetLayoutsAndProductSources = function() {
+      return $.when($.get("" + ajaxurl + "?action=get_product_sources"), $.get("" + ajaxurl + "?action=get_widget_layouts")).then(function(productSourcesResult, widgetLayoutsResult) {
+        var $form, $layoutTd, $productSourceSelect, checkedString, errorMessages, first, iconHeight, iconVerticalMargin, iconWidth, id, maxIconHeight, productSource, productSources, widgetLayout, widgetLayoutNames, widgetLayouts, _i, _j, _len, _len1, _ref, _ref1;
         $form = $('form');
-        if (typeof response === 'string') {
-          return $form.html(response);
+        $form.prev('.ajax-loader').hide();
+        _ref = [productSourcesResult[0], widgetLayoutsResult[0]], productSources = _ref[0], widgetLayouts = _ref[1];
+        errorMessages = $.grep([productSources, widgetLayouts], function(el) {
+          return typeof el === 'string';
+        });
+        if (errorMessages.length > 0) {
+          Rollbar.error(errorMessages);
+          $form.html(errorMessages[0]);
         } else {
-          $('body').data('widget_layouts', response);
-          $td = $('tr#layout td');
-          widgetLayoutNames = [];
+          $productSourceSelect = $form.find('tr#product-source select');
+          for (_i = 0, _len = productSources.length; _i < _len; _i++) {
+            productSource = productSources[_i];
+            $productSourceSelect.append("<option value='" + productSource.id + "' data-url='" + productSource.url + "' data-image='" + productSource.logo_url_thumb + "'>" + productSource.name + "</option>");
+          }
+          loadCategories();
+          $productSourceSelect.change(loadCategories);
+          $productSourceSelect.select2({
+            templateResult: function(option) {
+              var $el;
+              if (option.id) {
+                $el = $(option.element);
+                return $("<div class='product-source-option'>" + ("<img src='" + ($el.data('image')) + "'>") + ("<span class='product-source-name'>" + option.text + "</span><br>") + ("<span class='product-source-url'>" + ($el.data('url').replace(/\Ahttps?:\/\//, '')) + "</span>") + "</div>");
+              } else {
+                return option.text;
+              }
+            }
+          });
+          $('body').data('widget-layouts', widgetLayouts);
+          $layoutTd = $form.find('tr#layout td');
           first = true;
           maxIconHeight = 55;
           widgetLayoutNames = [];
-          for (_i = 0, _len = response.length; _i < _len; _i++) {
-            widgetLayout = response[_i];
+          for (_j = 0, _len1 = widgetLayouts.length; _j < _len1; _j++) {
+            widgetLayout = widgetLayouts[_j];
             if (jQuery.inArray(widgetLayout['name'], widgetLayoutNames) > -1) {
               continue;
             } else {
@@ -129,43 +151,95 @@
             }
             checkedString = first ? 'checked="checked" ' : '';
             id = ['widget-layout', widgetLayout['name'].toLowerCase().replace(/\s+/g, '-')].join('-');
-            _ref = $.map(['width', 'height'], function(attr) {
+            _ref1 = $.map(['width', 'height'], function(attr) {
               return round(widgetLayout[attr] / 8, 2);
-            }), iconWidth = _ref[0], iconHeight = _ref[1];
+            }), iconWidth = _ref1[0], iconHeight = _ref1[1];
             if (iconHeight > maxIconHeight) {
               iconWidth = round(iconWidth * maxIconHeight / iconHeight, 2);
               iconHeight = maxIconHeight;
             }
             iconVerticalMargin = round((maxIconHeight - iconHeight) / 2, 2);
-            $td.append(("<input type='radio' name='widget-layout' id='" + id + "' value='" + widgetLayout['name'] + "' " + checkedString + "/>") + ("<label for='" + id + "'>") + ("<div class='icon' style='width: " + iconWidth + "px; height: " + iconHeight + "px; margin-top: " + iconVerticalMargin + "px; margin-bottom: " + iconVerticalMargin + "px'></div>") + ("<div class='name'>" + widgetLayout['name'] + "</div>") + ("<div class='size'>" + widgetLayout['width'] + "px &times; " + widgetLayout['height'] + "px</div>") + "</label>");
+            $layoutTd.append(("<input type='radio' name='widget-layout' id='" + id + "' value='" + widgetLayout['name'] + "' " + checkedString + "/>") + ("<label for='" + id + "'>") + ("<div class='icon' style='width: " + iconWidth + "px; height: " + iconHeight + "px; margin-top: " + iconVerticalMargin + "px; margin-bottom: " + iconVerticalMargin + "px'></div>") + ("<div class='name'>" + widgetLayout['name'] + "</div>") + ("<div class='size'>" + widgetLayout['width'] + "px &times; " + widgetLayout['height'] + "px</div>") + "</label>");
             if (first) {
               first = false;
             }
           }
-          return $form.show();
+        }
+        return $form.show();
+      });
+    };
+    loadCategories = function() {
+      var $categoryLoader, $categorySelects, $categoryWrapper, productSourceId;
+      $categoryWrapper = $('tr#categories .wrapper');
+      $categorySelects = $categoryWrapper.find('select');
+      $categoryLoader = $categoryWrapper.find('.ajax-loader');
+      productSourceId = $('tr#product-source select').val();
+      $categorySelects.empty().hide();
+      $categoryLoader.show();
+      return $.get("" + ajaxurl + "?action=get_categories&product_source_id=" + productSourceId, function(response) {
+        var category, _i, _len;
+        if (typeof response === 'string') {
+          Rollbar.error(response);
+          return $categoryWrapper.html(response);
+        } else {
+          if (response[0] !== '') {
+            response.unshift('');
+          }
+          for (_i = 0, _len = response.length; _i < _len; _i++) {
+            category = response[_i];
+            $categorySelects.append("<option value='" + category + "'>" + category + "</option>");
+          }
+          $categoryLoader.hide();
+          return $categorySelects.show();
         }
       });
     };
-    watchKeywordInputs = function() {
-      return $(document).on('click', 'input[name="keywords"]', function(e) {
-        return $('input#keywords_manual').prop('checked', true);
+    watchCategoriesAndKeywords = function() {
+      $(document).on('click', '#categories select', function(e) {
+        return $('input#categories-manual').prop('checked', true);
+      });
+      return $(document).on('click', '#keywords input[type="text"]', function(e) {
+        return $('input#keywords-manual').prop('checked', true);
       });
     };
     return watchWidgetForm = function() {
       return $(document).on('submit', 'form', function(e) {
-        var effect, keywords, productsType, shortcode, widgetLayout, widgetLayoutName, widgetLayouts;
+        var $categorieFields, $keywordFields, categories, categoriesType, data, effect, keywords, keywordsType, productSourceId, productSourceName, widgetLayout, widgetLayoutName, widgetLayouts;
         e.preventDefault();
+        $('tr#shortcode, tr#preview').show();
+        $('#error').hide();
+        $('tr#preview').find('#widget, #note').empty();
+        $('tr#preview .ajax-loader').show();
+        $('tr#shortcode textarea').val('');
         widgetLayoutName = $('input[name="widget-layout"]:checked').val();
         effect = $('input[name="effect"]:checked').val();
-        widgetLayouts = $('body').data('widget_layouts');
+        widgetLayouts = $('body').data('widget-layouts');
         widgetLayout = $.grep(widgetLayouts, function(widgetLayout) {
           return widgetLayout['name'] === widgetLayoutName && widgetLayout['configuration']['show_slider'] === (effect === 'slider');
-        });
-        productsType = $('input[name="products"]:checked').val();
-        if (productsType === 'automated_title') {
-          keywords = ['TITLE'];
+        })[0];
+        productSourceId = $('tr#product-source select').val();
+        productSourceName = $('tr#product-source select option:selected').text();
+        categoriesType = $('input[name="categories"]:checked').val();
+        if (categoriesType === 'none') {
+          categories = [];
         } else {
-          keywords = $('input[name="keywords"]').map(function(i, el) {
+          $categorieFields = $('#categories select:visible');
+          categories = $categorieFields.map(function(i, el) {
+            var category;
+            category = $(el).val().trim();
+            if (category.length === 0) {
+              return null;
+            } else {
+              return category;
+            }
+          }).get();
+        }
+        keywordsType = $('input[name="keywords"]:checked').val();
+        if (keywordsType === 'none') {
+          keywords = [];
+        } else {
+          $keywordFields = $('#keywords input[type="text"]');
+          keywords = $keywordFields.map(function(i, el) {
             var keyword;
             keyword = $(el).val().toLowerCase().trim();
             if (keyword.length === 0) {
@@ -174,22 +248,49 @@
               return keyword;
             }
           }).get();
-          if (keywords.length === 0) {
-            alert('Please enter at least one keyword.');
-            $('input[name="keywords"]:first').focus();
-            reenableFormButtons();
-            return;
-          }
         }
-        shortcode = "[productwidget layout=\"" + widgetLayout[0]['identifier'] + "\" keywords=\"" + (keywords.join(',')) + "\"]";
-        $('tr#preview td #widget').empty();
-        $.get("" + ajaxurl + "?action=parse_widget_shortcode&shortcode=" + shortcode, function(response) {
-          $('tr#preview td #widget').html(response);
-          $('#automated-title-note').toggle(productsType === 'automated_title');
-          return reenableFormButtons();
+        data = {
+          widget: {
+            layout_id: widgetLayout.id,
+            search_combos: [
+              {
+                product_source_id: productSourceId,
+                categories: categories,
+                keywords: keywords
+              }
+            ]
+          }
+        };
+        return $.post("" + ajaxurl + "?action=create_widget", data, function(response) {
+          var shortcode;
+          $('tr#preview .ajax-loader').hide();
+          if (response.success) {
+            shortcode = "[productwidget id=\"" + response.data.identifier + "\"]";
+            $.get("" + ajaxurl + "?action=parse_widget_shortcode&shortcode=" + shortcode, function(response) {
+              var noteText;
+              $('tr#preview td #widget').html(response);
+              noteText = 'This widget contains popular products ';
+              noteText += keywords.length === 1 ? "for the keyword \"" + keywords[0] + "\"" : keywords.length > 1 ? "for the keywords " + (($.map(keywords.slice(0, -1), function(keyword) {
+                return "\"" + keyword + "\"";
+              })).join(', ')) + (keywords.length > 2 ? ',' : '') + " and \"" + keywords[keywords.length - 1] + "\"" : void 0;
+              noteText += ' from ';
+              noteText += categories.length === 0 ? 'all categories' : categories.length === 1 ? "the category \"" + categories[0] + "\"" : "the categories " + (($.map(categories.slice(0, -1), function(category) {
+                return "\"" + category + "\"";
+              })).join(', ')) + (categories.length > 2 ? ',' : '') + " and \"" + categories[categories.length - 1] + "\"";
+              noteText += " of " + productSourceName + ".";
+              $('#note').text(noteText);
+              return reenableFormButtons();
+            });
+            $('tr#shortcode textarea').val(shortcode);
+            return $('html, body').animate({
+              scrollTop: $('tr#preview').offset().top
+            }, 1000);
+          } else {
+            $('tr#shortcode, tr#preview').hide();
+            $('#error').html(response.data).show();
+            return reenableFormButtons();
+          }
         });
-        $('tr#shortcode textarea').val(shortcode);
-        return $('tr#shortcode, tr#preview').show();
       });
     };
   })(jQuery);

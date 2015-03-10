@@ -6,6 +6,7 @@
  * @copyright 2015 kraut computing UG (haftungsbeschränkt)
  */
  ?>
+<?php include('partials/_rollbar.php') ?>
 <div class='wrap'>
   <h2>
     Houston, we have a problem.

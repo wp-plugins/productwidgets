@@ -73,14 +73,48 @@ body.productwidgets_page_productwidgets-add-widget .exception {
   color: #f00;
 }
 /* line 4, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget .product-source-option {
+  position: relative;
+  overflow: hidden;
+}
+/* line 8, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget .product-source-option img {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  max-width: 60px;
+  margin-right: 10px;
+  border: 1px solid #eee;
+}
+/* line 17, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget .product-source-option span {
+  margin-left: 70px;
+}
+/* line 20, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget .product-source-option span.product-source-name {
+  font-weight: bold;
+}
+/* line 24, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget .product-source-option span.product-source-url {
+  font-size: 0.8em;
+}
+/* line 30, ../../sass/pages/_add-widget.scss */
 body.productwidgets_page_productwidgets-add-widget form {
   display: none;
 }
-/* line 15, ../../sass/pages/_add-widget.scss */
+/* line 39, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr td > div {
+  margin-bottom: 5px;
+}
+/* line 46, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#product-source select {
+  width: 400px;
+}
+/* line 55, ../../sass/pages/_add-widget.scss */
 body.productwidgets_page_productwidgets-add-widget form table tr#layout td input {
   display: none;
 }
-/* line 19, ../../sass/pages/_add-widget.scss */
+/* line 59, ../../sass/pages/_add-widget.scss */
 body.productwidgets_page_productwidgets-add-widget form table tr#layout td label {
   position: relative;
   overflow: hidden;
@@ -94,45 +128,44 @@ body.productwidgets_page_productwidgets-add-widget form table tr#layout td label
   padding: 5px;
   text-align: center;
 }
-/* line 32, ../../sass/pages/_add-widget.scss */
+/* line 72, ../../sass/pages/_add-widget.scss */
 body.productwidgets_page_productwidgets-add-widget form table tr#layout td label .icon {
   background-color: #aaa;
   margin-left: auto;
   margin-right: auto;
 }
-/* line 38, ../../sass/pages/_add-widget.scss */
+/* line 78, ../../sass/pages/_add-widget.scss */
 body.productwidgets_page_productwidgets-add-widget form table tr#layout td label .size {
   font-size: 0.9em;
 }
-/* line 43, ../../sass/pages/_add-widget.scss */
+/* line 83, ../../sass/pages/_add-widget.scss */
 body.productwidgets_page_productwidgets-add-widget form table tr#layout td input:checked + label {
   border-color: #666;
   background-color: #e6e6e6;
 }
-/* line 47, ../../sass/pages/_add-widget.scss */
+/* line 87, ../../sass/pages/_add-widget.scss */
 body.productwidgets_page_productwidgets-add-widget form table tr#layout td input:checked + label .icon {
   background-color: #666;
 }
-/* line 58, ../../sass/pages/_add-widget.scss */
-body.productwidgets_page_productwidgets-add-widget form table tr#products #keywords input {
-  width: 120px;
-}
-/* line 61, ../../sass/pages/_add-widget.scss */
-body.productwidgets_page_productwidgets-add-widget form table tr#products #keywords input:first-of-type {
+/* line 94, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#categories .ajax-loader, body.productwidgets_page_productwidgets-add-widget form table tr#categories select:first-of-type, body.productwidgets_page_productwidgets-add-widget form table tr#keywords input[type="text"]:first-of-type {
   margin-left: 24px;
 }
-/* line 68, ../../sass/pages/_add-widget.scss */
+/* line 100, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#categories select, body.productwidgets_page_productwidgets-add-widget form table tr#keywords input[type="text"] {
+  width: 120px;
+}
+/* line 105, ../../sass/pages/_add-widget.scss */
 body.productwidgets_page_productwidgets-add-widget form table tr#shortcode, body.productwidgets_page_productwidgets-add-widget form table tr#preview {
   display: none;
 }
-/* line 75, ../../sass/pages/_add-widget.scss */
+/* line 112, ../../sass/pages/_add-widget.scss */
 body.productwidgets_page_productwidgets-add-widget form table tr#shortcode textarea {
-  width: 450px;
+  width: 400px;
   background-color: white;
 }
-/* line 84, ../../sass/pages/_add-widget.scss */
-body.productwidgets_page_productwidgets-add-widget form table td #automated-title-note {
-  display: none;
+/* line 121, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table td #note {
   margin: 10px 0 0;
   max-width: 600px;
 }

@@ -6,6 +6,7 @@
  * @copyright 2015 kraut computing UG (haftungsbeschränkt)
  */
  ?>
+<?php include('partials/_rollbar.php') ?>
 <div class='wrap'>
   <h2>
     <?php echo esc_html(get_admin_page_title()) ?>

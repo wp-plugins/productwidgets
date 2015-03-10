@@ -62,17 +62,14 @@
   }
   
   $api = Product_Widgets::get_instance()->api;
-  $widget_layouts = $api->get_widget_layouts();
-  $widget_layouts_with_widgets = array_filter($widget_layouts, function($item) {
-    return $item["widgets_count"] > 0;
-  });
+  $widgets = $api->get_widgets();
   
-  if (empty($widget_layouts_with_widgets)) {
+  if (empty($widgets)) {
     include("_empty.php");
   } else {
     include("_intro.php");
     $widgets_list_table = new Widgets_List_Table();
-    $widgets_list_table->items = $widget_layouts_with_widgets;
+    $widgets_list_table->items = $widgets;
     $widgets_list_table->prepare_items();
     $widgets_list_table->display();
   }
