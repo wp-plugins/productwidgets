@@ -23,9 +23,16 @@
         //  $format = get_option("date_format")." ".get_option("time_format");
         //  $output = get_date_from_gmt($date, $format);
         //  return $output;
+        case "impressions":
+        case "clicks":
+          $stats_type = $column_name;
+          ob_start();
+          include("table/_stats.php");
+          $output = ob_get_clean();
+          return $output;
         default:
           ob_start();
-          include("widget_layouts/_$column_name.php");
+          include("table/_$column_name.php");
           $output = ob_get_clean();
           return $output;
       }
@@ -38,33 +45,32 @@
     function get_columns() {
       $columns = array(
         "cb"          => "<input type='checkbox' />",
-        "name"        => "Name",
-        "implemented" => "Implemented on...",
-        "shortcode"   => "Shortcode",
+        "layout"      => "Layout",
+        "impressions" => "Impressions (last 7 days)",
+        "clicks"      => "Clicks (last 7 days)",
         "actions"     => "Actions"
       );
       return $columns;
     }
   
     function prepare_items() {
-      $api = Product_Widgets::get_instance()->api;
-  
       $columns  = $this->get_columns();
       $hidden   = array();
       $sortable = array();
       $this->_column_headers = array($columns, $hidden, $sortable);
-  
-      $items = $api->get_widget_layouts();
-      $this->items = $items;
     }
   }
   
-  try {
+  $api = Product_Widgets::get_instance()->api;
+  $widgets = $api->get_widgets();
+  
+  if (empty($widgets)) {
+    include("_empty.php");
+  } else {
+    include("_intro.php");
     $widgets_list_table = new Widgets_List_Table();
+    $widgets_list_table->items = $widgets;
     $widgets_list_table->prepare_items();
     $widgets_list_table->display();
-  } catch (Exception $e) {
-    $error_message = "Could not load widget layouts.";
-    include("_exception.php");
   }
 ?>
