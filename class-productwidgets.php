@@ -21,7 +21,7 @@ class Product_Widgets {
    *
    * @var     string
    */
-  const VERSION = '1.0.0';
+  const VERSION = '3.0.0';
 
   /**
    * Unique identifier for your plugin.

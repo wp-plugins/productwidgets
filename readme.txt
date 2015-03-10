@@ -93,6 +93,12 @@ Check out the [ProductWidgets website](https://www.productwidgets.com/) for more
 
 == Changelog ==
 
+= 3.0.0 =
+
+* Rewrite of pretty much all parts of the plugin (should still be backwards compatible)
+* When creating a new widget, you can now select a product source and categories.
+* The format of the shortcode was changed, but the old ones should still work fine.
+
 = 2.0.6 =
 
 * Fix array definition for older PHP versions
