@@ -93,6 +93,10 @@ Check out the [ProductWidgets website](https://www.productwidgets.com/) for more
 
 == Changelog ==
 
+= 2.0.6 =
+
+* Fix array definition for older PHP versions
+
 = 2.0.5 =
 
 * Update signup form
