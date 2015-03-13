@@ -1,56 +1,236 @@
-/* line 3, ../../sass/pages/_settings.scss */
-body.productwidgets_page_productwidgets-settings #existing-api-key-form {
+/* line 3, ../../sass/_base.scss */
+body.toplevel_page_productwidgets-widgets * {
+  box-sizing: border-box;
+}
+/* line 7, ../../sass/_base.scss */
+body.toplevel_page_productwidgets-widgets .lazy,
+body.toplevel_page_productwidgets-widgets .thickbox-content {
   display: none;
 }
-/* line 10, ../../sass/pages/_settings.scss */
-body.productwidgets_page_productwidgets-settings form#tracking-ids table,
-body.productwidgets_page_productwidgets-settings form#default-locale table {
-  display: none;
-}
-
-/* line 9, ../../sass/pages/_widget-layouts.scss */
-body.toplevel_page_productwidgets-widget-layouts table.widgets tr th#layout {
-  width: 340px;
-}
-/* line 13, ../../sass/pages/_widget-layouts.scss */
-body.toplevel_page_productwidgets-widget-layouts table.widgets tr th#implemented {
-  width: 200px;
-}
-/* line 17, ../../sass/pages/_widget-layouts.scss */
-body.toplevel_page_productwidgets-widget-layouts table.widgets tr th#shortcode {
-  width: 280px;
-}
-/* line 26, ../../sass/pages/_widget-layouts.scss */
-body.toplevel_page_productwidgets-widget-layouts table.widgets tr td.actions .widget-preview-container {
-  display: none;
-}
-/* line 36, ../../sass/pages/_widget-layouts.scss */
-body.toplevel_page_productwidgets-widget-layouts .widget-preview-wrapper {
-  text-align: center;
-}
-/* line 39, ../../sass/pages/_widget-layouts.scss */
-body.toplevel_page_productwidgets-widget-layouts .widget-preview-wrapper .pw-widget {
-  margin: 0 auto;
-}
-
-/* line 6, ../../sass/admin.scss */
-.lazy,
-.thickbox-content {
-  display: none;
-}
-
-/* line 13, ../../sass/admin.scss */
-.ajax-loader img {
+/* line 14, ../../sass/_base.scss */
+body.toplevel_page_productwidgets-widgets .ajax-loader img {
   vertical-align: middle;
   margin-right: 5px;
 }
-
-/* line 19, ../../sass/admin.scss */
-.error {
+/* line 20, ../../sass/_base.scss */
+body.toplevel_page_productwidgets-widgets .exception {
   color: #f00;
 }
+/* line 10, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets table.widgets tr th#actions {
+  width: 100px;
+}
+/* line 17, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets table.widgets tr td table {
+  width: 100%;
+}
+/* line 20, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets table.widgets tr td table th, body.toplevel_page_productwidgets-widgets table.widgets tr td table td {
+  padding: 0 0 5px;
+}
+/* line 24, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets table.widgets tr td table th {
+  font-size: inherit;
+}
+/* line 30, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets table.widgets tr td table td.counts {
+  text-align: right;
+}
+/* line 38, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets table.widgets tr td.layout img {
+  border: 1px solid #eee;
+  margin: 5px 0 0;
+}
+/* line 46, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets table.widgets tr td.shortcode textarea {
+  width: 230px;
+}
+/* line 53, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets table.widgets tr td.actions .widget-preview-container {
+  display: none;
+}
+/* line 63, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets .widget-preview-wrapper {
+  text-align: center;
+}
+/* line 66, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets .widget-preview-wrapper .pw-widget {
+  margin: 0 auto;
+}
 
-/* line 23, ../../sass/admin.scss */
-textarea.shortcode {
-  width: 240px;
+/* line 3, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-add-widget * {
+  box-sizing: border-box;
+}
+/* line 7, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-add-widget .lazy,
+body.productwidgets_page_productwidgets-add-widget .thickbox-content {
+  display: none;
+}
+/* line 14, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-add-widget .ajax-loader img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+/* line 20, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-add-widget .exception {
+  color: #f00;
+}
+/* line 4, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget .product-source-option {
+  position: relative;
+  overflow: hidden;
+}
+/* line 8, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget .product-source-option img {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  max-width: 60px;
+  margin-right: 10px;
+  border: 1px solid #eee;
+}
+/* line 17, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget .product-source-option span {
+  margin-left: 70px;
+}
+/* line 20, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget .product-source-option span.product-source-name {
+  font-weight: bold;
+}
+/* line 24, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget .product-source-option span.product-source-url {
+  font-size: 0.8em;
+}
+/* line 30, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form {
+  display: none;
+}
+/* line 39, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr td > div {
+  margin-bottom: 5px;
+}
+/* line 46, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#product-source select {
+  width: 400px;
+}
+/* line 55, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#layout td input {
+  display: none;
+}
+/* line 59, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#layout td label {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  height: 100px;
+  width: 140px;
+  display: inline-block;
+  border: 1px solid #aaa;
+  vertical-align: top;
+  margin: 0 10px 10px 0;
+  padding: 5px;
+  text-align: center;
+}
+/* line 72, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#layout td label .icon {
+  background-color: #aaa;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 78, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#layout td label .size {
+  font-size: 0.9em;
+}
+/* line 83, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#layout td input:checked + label {
+  border-color: #666;
+  background-color: #e6e6e6;
+}
+/* line 87, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#layout td input:checked + label .icon {
+  background-color: #666;
+}
+/* line 94, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#categories .ajax-loader, body.productwidgets_page_productwidgets-add-widget form table tr#categories select:first-of-type, body.productwidgets_page_productwidgets-add-widget form table tr#keywords input[type="text"]:first-of-type {
+  margin-left: 24px;
+}
+/* line 100, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#categories select, body.productwidgets_page_productwidgets-add-widget form table tr#keywords input[type="text"] {
+  width: 120px;
+}
+/* line 105, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#shortcode, body.productwidgets_page_productwidgets-add-widget form table tr#preview {
+  display: none;
+}
+/* line 112, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table tr#shortcode textarea {
+  width: 400px;
+  background-color: white;
+}
+/* line 121, ../../sass/pages/_add-widget.scss */
+body.productwidgets_page_productwidgets-add-widget form table td #note {
+  margin: 10px 0 0;
+  max-width: 600px;
+}
+
+/* line 3, ../../sass/_base.scss */
+body.toplevel_page_productwidgets-signup * {
+  box-sizing: border-box;
+}
+/* line 7, ../../sass/_base.scss */
+body.toplevel_page_productwidgets-signup .lazy,
+body.toplevel_page_productwidgets-signup .thickbox-content {
+  display: none;
+}
+/* line 14, ../../sass/_base.scss */
+body.toplevel_page_productwidgets-signup .ajax-loader img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+/* line 20, ../../sass/_base.scss */
+body.toplevel_page_productwidgets-signup .exception {
+  color: #f00;
+}
+/* line 4, ../../sass/pages/_signup.scss */
+body.toplevel_page_productwidgets-signup #intro {
+  max-width: 650px;
+}
+/* line 10, ../../sass/pages/_signup.scss */
+body.toplevel_page_productwidgets-signup form input[type="text"],
+body.toplevel_page_productwidgets-signup form textarea,
+body.toplevel_page_productwidgets-signup form select {
+  width: 300px;
+}
+/* line 16, ../../sass/pages/_signup.scss */
+body.toplevel_page_productwidgets-signup form textarea {
+  height: 70px;
+}
+/* line 20, ../../sass/pages/_signup.scss */
+body.toplevel_page_productwidgets-signup form p {
+  max-width: 400px;
+}
+
+/* line 3, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-settings * {
+  box-sizing: border-box;
+}
+/* line 7, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-settings .lazy,
+body.productwidgets_page_productwidgets-settings .thickbox-content {
+  display: none;
+}
+/* line 14, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-settings .ajax-loader img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+/* line 20, ../../sass/_base.scss */
+body.productwidgets_page_productwidgets-settings .exception {
+  color: #f00;
+}
+/* line 4, ../../sass/pages/_settings.scss */
+body.productwidgets_page_productwidgets-settings #no-settings,
+body.productwidgets_page_productwidgets-settings #amazon {
+  display: none;
 }

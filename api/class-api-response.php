@@ -3,8 +3,8 @@
  * @package   ProductWidgets
  * @author    Kraut Computing <info@krautcomputing.com>
  * @license   GPL-2.0
- * @link      http://www.productwidgets.com/publishers/wordpress/
- * @copyright 2014 kraut computing UG (haftungsbeschränkt)
+ * @link      https://www.productwidgets.com/
+ * @copyright 2015 kraut computing UG (haftungsbeschränkt)
  */
 
 /**
@@ -82,7 +82,7 @@ class Api_Response implements ArrayAccess, Iterator {
       $expires = strtotime($this->get_header('expires'));
       return (time() > $expires);
     }
-    return false; // By default never expires
+    return true; // By default assume expired
   }
 
   /**
