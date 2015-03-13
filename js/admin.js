@@ -270,9 +270,13 @@
               var noteText;
               $('tr#preview td #widget').html(response);
               noteText = 'This widget contains popular products ';
-              noteText += keywords.length === 1 ? "for the keyword \"" + keywords[0] + "\"" : keywords.length > 1 ? "for the keywords " + (($.map(keywords.slice(0, -1), function(keyword) {
-                return "\"" + keyword + "\"";
-              })).join(', ')) + (keywords.length > 2 ? ',' : '') + " and \"" + keywords[keywords.length - 1] + "\"" : void 0;
+              if (keywords.length === 1) {
+                noteText += "for the keyword \"" + keywords[0] + "\"";
+              } else if (keywords.length > 1) {
+                noteText += "for the keywords " + (($.map(keywords.slice(0, -1), function(keyword) {
+                  return "\"" + keyword + "\"";
+                })).join(', ')) + (keywords.length > 2 ? ',' : '') + " and \"" + keywords[keywords.length - 1] + "\"";
+              }
               noteText += ' from ';
               noteText += categories.length === 0 ? 'all categories' : categories.length === 1 ? "the category \"" + categories[0] + "\"" : "the categories " + (($.map(categories.slice(0, -1), function(category) {
                 return "\"" + category + "\"";
