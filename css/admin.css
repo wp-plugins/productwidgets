@@ -42,14 +42,18 @@ body.toplevel_page_productwidgets-widgets table.widgets tr td.layout img {
   margin: 5px 0 0;
 }
 /* line 46, ../../sass/pages/_widgets.scss */
+body.toplevel_page_productwidgets-widgets table.widgets tr td.shortcode textarea {
+  width: 230px;
+}
+/* line 53, ../../sass/pages/_widgets.scss */
 body.toplevel_page_productwidgets-widgets table.widgets tr td.actions .widget-preview-container {
   display: none;
 }
-/* line 56, ../../sass/pages/_widgets.scss */
+/* line 63, ../../sass/pages/_widgets.scss */
 body.toplevel_page_productwidgets-widgets .widget-preview-wrapper {
   text-align: center;
 }
-/* line 59, ../../sass/pages/_widgets.scss */
+/* line 66, ../../sass/pages/_widgets.scss */
 body.toplevel_page_productwidgets-widgets .widget-preview-wrapper .pw-widget {
   margin: 0 auto;
 }

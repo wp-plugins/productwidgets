@@ -48,6 +48,7 @@
         "layout"      => "Layout",
         "impressions" => "Impressions (last 7 days)",
         "clicks"      => "Clicks (last 7 days)",
+        "shortcode"   => "Shortcode",
         "actions"     => "Actions"
       );
       return $columns;
