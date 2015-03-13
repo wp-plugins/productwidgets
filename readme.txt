@@ -93,6 +93,11 @@ Check out the [ProductWidgets website](https://www.productwidgets.com/) for more
 
 == Changelog ==
 
+= 3.0.1 =
+
+* Fix not below widget when adding a new widget
+* Show the shortcode in the list of widgets
+
 = 3.0.0 =
 
 * Rewrite of pretty much all parts of the plugin (should still be backwards compatible)

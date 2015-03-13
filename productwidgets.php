@@ -11,7 +11,7 @@
  * Plugin URI:  https://www.productwidgets.com/
  * Description: The Smart Alternative to Banner Ads - Monetise your website by promoting relevant products to your visitors.
  * Text Domain: productwidgets
- * Version:     3.0.0
+ * Version:     3.0.1
  * Author:      Kraut Computing
  * Author URI:  https://www.krautcomputing.com
  * License:     GPL-2.0
