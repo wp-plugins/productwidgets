@@ -12,6 +12,8 @@ The Smart Alternative to Banner Ads - Monetise your website by promoting relevan
 
 == Description ==
 
+**NOTICE: This plugin is currently not supported, please don't install! Get in touch via email if you are a publisher and want to use the widgets: hello@productwidgets.com**
+
 **Whether you run a personal blog or topic website, ProductWidgets helps you to monetise your content without annoying your users. Our beautiful widgets automatically display products which are relevant to your content - they are a better-looking, better-performing, less-obtrusive and more flexible alternative to traditional ad banners.**
 
 You can either set specific keywords for your widgets, and they will display products related to those keywords, or let the ProductWidgets analyze the pages you add widgets to, and find the best products for those pages automatically! The whole process is fully automated and happens behind the scenes, so you can focus on creating great content and let ProductWidgets take care of the monetization for you!
